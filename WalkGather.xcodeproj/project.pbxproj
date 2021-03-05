@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		7274C53225F0ABC3004F28FB /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274C53125F0ABC3004F28FB /* Member.swift */; };
 		941360AE25C0149400953BE2 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941360AD25C0149400953BE2 /* GroupViewController.swift */; };
+		9489A67725F2696800DD830E /* Jack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9489A67525F2696800DD830E /* Jack.storyboard */; };
+		9489A68225F26B9200DD830E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9489A68125F26B9200DD830E /* Common.swift */; };
 		949A4F3F25CBCD7C00FEBD38 /* NewAddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949A4F3E25CBCD7C00FEBD38 /* NewAddGroupViewController.swift */; };
 		94B23BB025C192230084F769 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B23BAF25C192230084F769 /* GroupTableViewCell.swift */; };
 		94E08D4C25BADE240013E403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E08D4B25BADE240013E403 /* AppDelegate.swift */; };
@@ -27,6 +29,8 @@
 		2E63E0A6463EE7BA8F60AFB9 /* Pods-WalkGather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WalkGather.release.xcconfig"; path = "Target Support Files/Pods-WalkGather/Pods-WalkGather.release.xcconfig"; sourceTree = "<group>"; };
 		7274C53125F0ABC3004F28FB /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		941360AD25C0149400953BE2 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		9489A67625F2696800DD830E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = WalkGather/Base.lproj/Jack.storyboard; sourceTree = "<group>"; };
+		9489A68125F26B9200DD830E /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		949A4F3E25CBCD7C00FEBD38 /* NewAddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddGroupViewController.swift; sourceTree = "<group>"; };
 		94B23BAF25C192230084F769 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		94E08D4825BADE240013E403 /* WalkGather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkGather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +103,76 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		9489A66B25F267F600DD830E /* Cheng */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Cheng;
+			sourceTree = "<group>";
+		};
+		9489A66C25F267FB00DD830E /* Ethan */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Ethan;
+			sourceTree = "<group>";
+		};
+		9489A66D25F2682600DD830E /* Jack */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Jack;
+			sourceTree = "<group>";
+		};
+		9489A66E25F2683900DD830E /* Ryan */ = {
+			isa = PBXGroup;
+			children = (
+				94E1874625E4AE4400ECF653 /* MyGroupTableViewCell.swift */,
+				94B23BAF25C192230084F769 /* GroupTableViewCell.swift */,
+			);
+			name = Ryan;
+			sourceTree = "<group>";
+		};
+		9489A67025F2685E00DD830E /* Ryan */ = {
+			isa = PBXGroup;
+			children = (
+				94E1874225E4ABD900ECF653 /* MyGroupViewController.swift */,
+				94E1873325E3C78200ECF653 /* JoinGroupViewController.swift */,
+				949A4F3E25CBCD7C00FEBD38 /* NewAddGroupViewController.swift */,
+				941360AD25C0149400953BE2 /* GroupViewController.swift */,
+			);
+			path = Ryan;
+			sourceTree = "<group>";
+		};
+		9489A67125F2687100DD830E /* Jack */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Jack;
+			sourceTree = "<group>";
+		};
+		9489A67225F2687800DD830E /* Cheng */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cheng;
+			sourceTree = "<group>";
+		};
+		9489A67325F2688600DD830E /* Ethan */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Ethan;
+			sourceTree = "<group>";
+		};
+		9489A68025F26B8000DD830E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9489A68125F26B9200DD830E /* Common.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		94E08D3F25BADE240013E403 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +200,7 @@
 				94E08D4B25BADE240013E403 /* AppDelegate.swift */,
 				94E08D4D25BADE240013E403 /* SceneDelegate.swift */,
 				94E08D5125BADE240013E403 /* Main.storyboard */,
+				9489A67525F2696800DD830E /* Jack.storyboard */,
 				94E08D5425BADE280013E403 /* Assets.xcassets */,
 				94E08D5625BADE280013E403 /* LaunchScreen.storyboard */,
 				94E08D5925BADE280013E403 /* Info.plist */,
@@ -136,10 +211,11 @@
 		94E1873E25E4A26E00ECF653 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				94E1874225E4ABD900ECF653 /* MyGroupViewController.swift */,
-				94E1873325E3C78200ECF653 /* JoinGroupViewController.swift */,
-				949A4F3E25CBCD7C00FEBD38 /* NewAddGroupViewController.swift */,
-				941360AD25C0149400953BE2 /* GroupViewController.swift */,
+				9489A68025F26B8000DD830E /* Network */,
+				9489A67325F2688600DD830E /* Ethan */,
+				9489A67225F2687800DD830E /* Cheng */,
+				9489A67125F2687100DD830E /* Jack */,
+				9489A67025F2685E00DD830E /* Ryan */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -147,8 +223,10 @@
 		94E1873F25E4A2BA00ECF653 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				94E1874625E4AE4400ECF653 /* MyGroupTableViewCell.swift */,
-				94B23BAF25C192230084F769 /* GroupTableViewCell.swift */,
+				9489A66E25F2683900DD830E /* Ryan */,
+				9489A66D25F2682600DD830E /* Jack */,
+				9489A66C25F267FB00DD830E /* Ethan */,
+				9489A66B25F267F600DD830E /* Cheng */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -225,6 +303,7 @@
 				94E08D5825BADE280013E403 /* LaunchScreen.storyboard in Resources */,
 				94E08D5525BADE280013E403 /* Assets.xcassets in Resources */,
 				94E08D5325BADE240013E403 /* Main.storyboard in Resources */,
+				9489A67725F2696800DD830E /* Jack.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +343,7 @@
 				94E1874325E4ABD900ECF653 /* MyGroupViewController.swift in Sources */,
 				94E08D4C25BADE240013E403 /* AppDelegate.swift in Sources */,
 				94B23BB025C192230084F769 /* GroupTableViewCell.swift in Sources */,
+				9489A68225F26B9200DD830E /* Common.swift in Sources */,
 				94E1874725E4AE4400ECF653 /* MyGroupTableViewCell.swift in Sources */,
 				94E08D4E25BADE240013E403 /* SceneDelegate.swift in Sources */,
 				949A4F3F25CBCD7C00FEBD38 /* NewAddGroupViewController.swift in Sources */,
@@ -276,6 +356,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		9489A67525F2696800DD830E /* Jack.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9489A67625F2696800DD830E /* Base */,
+			);
+			name = Jack.storyboard;
+			sourceTree = "<group>";
+		};
 		94E08D5125BADE240013E403 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
