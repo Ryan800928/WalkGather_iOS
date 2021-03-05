@@ -1,0 +1,6 @@
+framework module Pods_WalkGather {
+  umbrella header "Pods-WalkGather-umbrella.h"
+
+  export *
+  module * { export * }
+}
