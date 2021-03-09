@@ -16,10 +16,11 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     var walkTime = ["最新","最多人數"]
     var walkDifficulty = ["一般","中級","地獄"]
     
-    @IBOutlet weak var taiwanAreaField: UITextField!
-    @IBOutlet weak var walkTimeField: UITextField!
-    @IBOutlet weak var walkDifficultyField: UITextField!
-    var pickerField:UITextField!
+    @IBOutlet weak var taiwanAreaTextVIew: UITextView!
+    @IBOutlet weak var walkTimeTextView: UITextView!
+    @IBOutlet weak var walkDifficultyTextView: UITextView!
+    
+    var pickerTextView :UITextView!
     
     var taiwanAreaPickerView = UIPickerView()
     var walkTimePickerView = UIPickerView()
@@ -43,13 +44,15 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         walkDifficultyPickerView.delegate = self
         walkDifficultyPickerView.dataSource = self
         
-        taiwanAreaField.inputView = taiwanAreaPickerView
-        walkTimeField.inputView = walkTimePickerView
-        walkDifficultyField.inputView = walkDifficultyPickerView
+        taiwanAreaTextVIew.inputView = taiwanAreaPickerView
+        walkTimeTextView.inputView = walkTimePickerView
+        walkDifficultyTextView.inputView = walkDifficultyPickerView
+        
         
         taiwanAreaPickerView.tag = 1
         walkTimePickerView.tag = 2
         walkDifficultyPickerView.tag = 3
+        
         
         createPicker()
         
@@ -69,12 +72,13 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         toolbar.setItems([doneBtn], animated: true)
         
         //inputAccessoryView輸入附件視圖
-        taiwanAreaField.inputAccessoryView = toolbar
-        taiwanAreaField.inputView = taiwanAreaPickerView
-        walkTimeField.inputAccessoryView = toolbar
-        walkTimeField.inputView = walkTimePickerView
-        walkDifficultyField.inputAccessoryView = toolbar
-        walkDifficultyField.inputView = walkDifficultyPickerView
+        taiwanAreaTextVIew.inputAccessoryView = toolbar
+        taiwanAreaTextVIew.inputView = taiwanAreaPickerView
+        walkTimeTextView.inputAccessoryView = toolbar
+        walkTimeTextView.inputView = walkTimePickerView
+        walkDifficultyTextView.inputAccessoryView = toolbar
+        walkDifficultyTextView.inputView = walkDifficultyPickerView
+        
     }
     //Done Button方法
     @objc func donePressed(){
@@ -132,13 +136,13 @@ extension GroupViewController : UIPickerViewDataSource,UIPickerViewDelegate{
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView.tag {
         case 1:
-            taiwanAreaField.text = taiwanArea[row]
+            taiwanAreaTextVIew.text = taiwanArea[row]
         //taiwanAreaField.resignFirstResponder()
         case 2:
-            walkTimeField.text = walkTime[row]
+            walkTimeTextView.text = walkTime[row]
         //walkTimeField.resignFirstResponder()
         case 3:
-            walkDifficultyField.text = walkDifficulty[row]
+            walkDifficultyTextView.text = walkDifficulty[row]
         //walkDifficultyField.resignFirstResponder()
         default:
             return
