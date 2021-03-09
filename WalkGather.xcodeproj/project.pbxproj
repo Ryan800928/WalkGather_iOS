@@ -15,6 +15,10 @@
 		72782DBE25F4B6810046D415 /* NotificationBBI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DB925F4B6810046D415 /* NotificationBBI.swift */; };
 		72782DBF25F4B6810046D415 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DBA25F4B6810046D415 /* AccountVC.swift */; };
 		72782DC025F4B6810046D415 /* GroupNotificationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DBB25F4B6810046D415 /* GroupNotificationTVC.swift */; };
+		72F87D2025F72F6200C4AB51 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F87D1F25F72F6200C4AB51 /* NotificationCell.swift */; };
+		72F87D2425F72FC400C4AB51 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F87D2225F72FC400C4AB51 /* LoginVC.swift */; };
+		72F87D2525F72FC400C4AB51 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F87D2325F72FC400C4AB51 /* RegisterVC.swift */; };
+		72F87D2825F72FD000C4AB51 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F87D2725F72FD000C4AB51 /* Register.swift */; };
 		941360AE25C0149400953BE2 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941360AD25C0149400953BE2 /* GroupViewController.swift */; };
 		9489A67725F2696800DD830E /* Jack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9489A67525F2696800DD830E /* Jack.storyboard */; };
 		9489A68225F26B9200DD830E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9489A68125F26B9200DD830E /* Common.swift */; };
@@ -40,6 +44,10 @@
 		72782DB925F4B6810046D415 /* NotificationBBI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationBBI.swift; sourceTree = "<group>"; };
 		72782DBA25F4B6810046D415 /* AccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		72782DBB25F4B6810046D415 /* GroupNotificationTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupNotificationTVC.swift; sourceTree = "<group>"; };
+		72F87D1F25F72F6200C4AB51 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		72F87D2225F72FC400C4AB51 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		72F87D2325F72FC400C4AB51 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		72F87D2725F72FD000C4AB51 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		941360AD25C0149400953BE2 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		9489A67625F2696800DD830E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = WalkGather/Base.lproj/Jack.storyboard; sourceTree = "<group>"; };
 		9489A68125F26B9200DD830E /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
@@ -87,6 +95,7 @@
 		7274C52E25F0AB41004F28FB /* Jack */ = {
 			isa = PBXGroup;
 			children = (
+				72F87D2725F72FD000C4AB51 /* Register.swift */,
 				7274C53125F0ABC3004F28FB /* Member.swift */,
 			);
 			path = Jack;
@@ -130,6 +139,7 @@
 		9489A66D25F2682600DD830E /* Jack */ = {
 			isa = PBXGroup;
 			children = (
+				72F87D1F25F72F6200C4AB51 /* NotificationCell.swift */,
 			);
 			path = Jack;
 			sourceTree = "<group>";
@@ -157,6 +167,8 @@
 		9489A67125F2687100DD830E /* Jack */ = {
 			isa = PBXGroup;
 			children = (
+				72F87D2225F72FC400C4AB51 /* LoginVC.swift */,
+				72F87D2325F72FC400C4AB51 /* RegisterVC.swift */,
 				72782DBA25F4B6810046D415 /* AccountVC.swift */,
 				72782DB725F4B6810046D415 /* FriendNotificationTVC.swift */,
 				72782DBB25F4B6810046D415 /* GroupNotificationTVC.swift */,
@@ -364,12 +376,16 @@
 				94E08D4E25BADE240013E403 /* SceneDelegate.swift in Sources */,
 				949A4F3F25CBCD7C00FEBD38 /* NewAddGroupViewController.swift in Sources */,
 				72782DB425F4B6370046D415 /* MyGroupTableViewCell.swift in Sources */,
+				72F87D2525F72FC400C4AB51 /* RegisterVC.swift in Sources */,
 				94E1873425E3C78300ECF653 /* JoinGroupViewController.swift in Sources */,
 				941360AE25C0149400953BE2 /* GroupViewController.swift in Sources */,
 				72782DBF25F4B6810046D415 /* AccountVC.swift in Sources */,
+				72F87D2825F72FD000C4AB51 /* Register.swift in Sources */,
 				72782DBC25F4B6810046D415 /* FriendNotificationTVC.swift in Sources */,
+				72F87D2425F72FC400C4AB51 /* LoginVC.swift in Sources */,
 				7274C53225F0ABC3004F28FB /* Member.swift in Sources */,
 				72782DBD25F4B6810046D415 /* MemberVC.swift in Sources */,
+				72F87D2025F72F6200C4AB51 /* NotificationCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

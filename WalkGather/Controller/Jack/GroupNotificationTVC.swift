@@ -7,13 +7,18 @@
 
 import UIKit
 
-class GroupNotificationTVC: UITableViewController {
-
+class GroupNotificationTVC: UITableViewController{
+    
+    
+    @IBOutlet var GroupNotificationTV: UITableView!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-
     
     }
 
@@ -21,14 +26,22 @@ class GroupNotificationTVC: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
 
-        return 0
+        return 6
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return 0
+        return 1
     }
 
-   
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cells") as! NotificationCell
+        
+        cell.cellImage.image = UIImage(named: "noimage")
+        cell.cellLable.text = "12345"
+        
+        return cell
+    }
 
 }
