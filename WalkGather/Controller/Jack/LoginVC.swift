@@ -9,8 +9,8 @@ import UIKit
 
 class LoginVC: UIViewController {
     
-    var members = [Member]()
-    
+    var member : Member!
+        
     let url_server = URL(string: common_url + "MemberServlet")
     
     @IBOutlet weak var tfEmail: UITextField!
@@ -18,7 +18,7 @@ class LoginVC: UIViewController {
     
         
     @IBAction func btLogin(_ sender: Any) {
-    
+            
     let email = tfEmail.text == nil ? "" :
             tfEmail.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = tfPassword.text == nil ? "" :
@@ -37,14 +37,36 @@ class LoginVC: UIViewController {
                     if data != nil {
                         // 將輸入資料列印出來除錯用
                         print("input: \(String(data: data!, encoding: .utf8)!)")
-
-                        if let result = try? JSONDecoder().decode([Member].self, from: data!) {
-                            self.members = result
-
-                            DispatchQueue.main.async {
-                                self.navigationController?.popViewController(animated: true)
+                        
+                        if let download = try? JSONDecoder().decode([String : String].self, from: data!){
+                            print("download: \(download)")
+                            if let memberStr = download["member"]{
+                                print("memberStr: \(memberStr)")
+                                let memberData = Data(memberStr.utf8)
+                                do {
+                                    self.member = try JSONDecoder().decode(Member.self, from: memberData)
+                                    
+                                    self.saveData()
+                                    
+                                    DispatchQueue.main.async {
+                                        self.navigationController?.popViewController(animated: true)
+                                    }
+                                    
+                                    print("member_ID \(member.id)")
+                                } catch let err {
+                                    print("Decode error: \(err)")
+                                }
                             }
                         }
+//                        self.saveData()
+                        
+//                        if let result = try? JSONDecoder().decode(Login.self, from: data!) {
+//                                DispatchQueue.main.async {
+//                                        self.navigationController?.popViewController(animated: true)
+//                                }
+//                            print("result: \(result)")
+//                            self.login = result
+//                        }
                     }
                 }
             }
@@ -56,7 +78,40 @@ class LoginVC: UIViewController {
         addKeyboardObserver()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    }
+    
+    func saveData(){
+        let userDefaults = UserDefaults.standard
+        
+        let id = member?.id
+        let name = member?.name
+        let nickname = member?.nickname
+        let birthday = member?.birthday?.prefix(10)
+        let gender = member?.gender
+        let email = member?.email
+        let phone = member?.phone
+        let emergency = member?.emergency
+        let relation = member?.relation
+        let emergencyPhone = member?.emergencyPhone
+        
+        userDefaults.set(id, forKey: "id")
+        userDefaults.set(name, forKey: "name")
+        userDefaults.set(nickname, forKey: "nickname")
+        userDefaults.set(birthday, forKey: "birthday")
+        userDefaults.set(gender, forKey: "gender")
+        userDefaults.set(email, forKey: "email")
+        userDefaults.set(phone, forKey: "phone")
+        userDefaults.set(emergency, forKey: "emergency")
+        userDefaults.set(relation, forKey: "relation")
+        userDefaults.set(emergencyPhone, forKey: "emergencyPhone")
+        
+        print("name \(userDefaults.string(forKey: "name"))")
+        
+    }
+    
 }
+    
 
 
 extension LoginVC {

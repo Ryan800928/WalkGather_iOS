@@ -10,11 +10,11 @@
 		7274C53225F0ABC3004F28FB /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274C53125F0ABC3004F28FB /* Member.swift */; };
 		72782DB325F4B6370046D415 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DB125F4B6370046D415 /* GroupTableViewCell.swift */; };
 		72782DB425F4B6370046D415 /* MyGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DB225F4B6370046D415 /* MyGroupTableViewCell.swift */; };
-		72782DBC25F4B6810046D415 /* FriendNotificationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DB725F4B6810046D415 /* FriendNotificationTVC.swift */; };
 		72782DBD25F4B6810046D415 /* MemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DB825F4B6810046D415 /* MemberVC.swift */; };
 		72782DBE25F4B6810046D415 /* NotificationBBI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DB925F4B6810046D415 /* NotificationBBI.swift */; };
 		72782DBF25F4B6810046D415 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DBA25F4B6810046D415 /* AccountVC.swift */; };
 		72782DC025F4B6810046D415 /* GroupNotificationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DBB25F4B6810046D415 /* GroupNotificationTVC.swift */; };
+		72810EFC25FA11A2004BDF57 /* AccountEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72810EFB25FA11A2004BDF57 /* AccountEditVC.swift */; };
 		72F87D2025F72F6200C4AB51 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F87D1F25F72F6200C4AB51 /* NotificationCell.swift */; };
 		72F87D2425F72FC400C4AB51 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F87D2225F72FC400C4AB51 /* LoginVC.swift */; };
 		72F87D2525F72FC400C4AB51 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F87D2325F72FC400C4AB51 /* RegisterVC.swift */; };
@@ -39,11 +39,11 @@
 		7274C53125F0ABC3004F28FB /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		72782DB125F4B6370046D415 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupTableViewCell.swift; path = Ryan/GroupTableViewCell.swift; sourceTree = "<group>"; };
 		72782DB225F4B6370046D415 /* MyGroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyGroupTableViewCell.swift; path = Ryan/MyGroupTableViewCell.swift; sourceTree = "<group>"; };
-		72782DB725F4B6810046D415 /* FriendNotificationTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendNotificationTVC.swift; sourceTree = "<group>"; };
 		72782DB825F4B6810046D415 /* MemberVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberVC.swift; sourceTree = "<group>"; };
 		72782DB925F4B6810046D415 /* NotificationBBI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationBBI.swift; sourceTree = "<group>"; };
 		72782DBA25F4B6810046D415 /* AccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
 		72782DBB25F4B6810046D415 /* GroupNotificationTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupNotificationTVC.swift; sourceTree = "<group>"; };
+		72810EFB25FA11A2004BDF57 /* AccountEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountEditVC.swift; sourceTree = "<group>"; };
 		72F87D1F25F72F6200C4AB51 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		72F87D2225F72FC400C4AB51 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		72F87D2325F72FC400C4AB51 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
@@ -167,10 +167,10 @@
 		9489A67125F2687100DD830E /* Jack */ = {
 			isa = PBXGroup;
 			children = (
+				72810EFB25FA11A2004BDF57 /* AccountEditVC.swift */,
 				72F87D2225F72FC400C4AB51 /* LoginVC.swift */,
 				72F87D2325F72FC400C4AB51 /* RegisterVC.swift */,
 				72782DBA25F4B6810046D415 /* AccountVC.swift */,
-				72782DB725F4B6810046D415 /* FriendNotificationTVC.swift */,
 				72782DBB25F4B6810046D415 /* GroupNotificationTVC.swift */,
 				72782DB825F4B6810046D415 /* MemberVC.swift */,
 				72782DB925F4B6810046D415 /* NotificationBBI.swift */,
@@ -380,8 +380,8 @@
 				94E1873425E3C78300ECF653 /* JoinGroupViewController.swift in Sources */,
 				941360AE25C0149400953BE2 /* GroupViewController.swift in Sources */,
 				72782DBF25F4B6810046D415 /* AccountVC.swift in Sources */,
+				72810EFC25FA11A2004BDF57 /* AccountEditVC.swift in Sources */,
 				72F87D2825F72FD000C4AB51 /* Register.swift in Sources */,
-				72782DBC25F4B6810046D415 /* FriendNotificationTVC.swift in Sources */,
 				72F87D2425F72FC400C4AB51 /* LoginVC.swift in Sources */,
 				7274C53225F0ABC3004F28FB /* Member.swift in Sources */,
 				72782DBD25F4B6810046D415 /* MemberVC.swift in Sources */,
