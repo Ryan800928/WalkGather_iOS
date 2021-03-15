@@ -81,7 +81,6 @@ class LoginVC: UIViewController, GIDSignInDelegate {
     
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        GIDSignInButton.
         print("sign(_:didSignInFor)")
       if let error = error {
         print("Google sign in error: \(error.localizedDescription)")
