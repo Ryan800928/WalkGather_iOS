@@ -318,6 +318,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="ivAvatar" destination="zSv-OR-nF6" id="x2f-HV-dPT"/>
                         <outlet property="lbNickName" destination="Dz4-8O-ws6" id="TXj-ly-CuI"/>
                     </connections>
                 </viewController>
@@ -954,7 +955,7 @@
         <!--登入-->
         <scene sceneID="lqO-iP-QK2">
             <objects>
-                <viewController title="登入" id="MqH-cE-PUo" customClass="LoginVC" customModule="WalkGather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" title="登入" id="MqH-cE-PUo" customClass="LoginVC" customModule="WalkGather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e2f-Se-U7h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1112,11 +1113,6 @@
                                     <constraint firstAttribute="width" constant="320" id="G5v-XT-M26"/>
                                     <constraint firstAttribute="height" constant="48" id="INV-L4-dYS"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="be1-dx-WF3"/>
@@ -1313,7 +1309,7 @@
         <!--通知-->
         <scene sceneID="emw-JZ-VU5">
             <objects>
-                <tabBarController storyboardIdentifier="Notification" title="通知" automaticallyAdjustsScrollViewInsets="NO" id="98v-pt-8LU" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Notification" title="通知" automaticallyAdjustsScrollViewInsets="NO" id="98v-pt-8LU" customClass="TabBC" customModule="WalkGather" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="WmU-zh-n9j"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IVg-yd-p4q">
@@ -1454,7 +1450,9 @@
                             <outlet property="delegate" destination="sxW-mY-G4a" id="pFx-wO-KIe"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" image="bell.circle.fill" catalog="system" id="PBR-mu-Fyl"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="bell.fill" catalog="system" id="PBR-mu-Fyl">
+                        <color key="badgeColor" red="0.53533720969999998" green="0.77974110839999999" blue="0.022607846189999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="80N-ky-Cqo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1466,6 +1464,7 @@
         <image name="applelogo" catalog="system" width="103" height="128"/>
         <image name="bell" catalog="system" width="128" height="124"/>
         <image name="bell.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="bell.fill" catalog="system" width="128" height="124"/>
         <image name="bookmark.circle" catalog="system" width="128" height="121"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="icEmail" width="44" height="30"/>

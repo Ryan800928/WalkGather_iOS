@@ -76,6 +76,10 @@ class LoginVC: UIViewController, GIDSignInDelegate {
         gidSignIn.delegate = self
         
         addKeyboardObserver()
+        
+        signInButton.layer.cornerRadius = CGFloat(10)
+        signInButton.layer.borderWidth = CGFloat(5)
+        signInButton.layer.borderColor = CGColor.init(red: 10, green: 10, blue: 10, alpha: 1)
     }
     
     

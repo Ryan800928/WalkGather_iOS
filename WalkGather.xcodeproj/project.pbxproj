@@ -19,6 +19,7 @@
 		72782DB425F4B6370046D415 /* MyGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DB225F4B6370046D415 /* MyGroupTableViewCell.swift */; };
 		72782DBD25F4B6810046D415 /* MemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DB825F4B6810046D415 /* MemberVC.swift */; };
 		72782DBF25F4B6810046D415 /* AccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DBA25F4B6810046D415 /* AccountVC.swift */; };
+		727DF5ED25FF6DEB001BE9BE /* TabBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727DF5EC25FF6DEB001BE9BE /* TabBC.swift */; };
 		72810EFC25FA11A2004BDF57 /* AccountEditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72810EFB25FA11A2004BDF57 /* AccountEditVC.swift */; };
 		72F87D2025F72F6200C4AB51 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F87D1F25F72F6200C4AB51 /* NotificationCell.swift */; };
 		72F87D2425F72FC400C4AB51 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72F87D2225F72FC400C4AB51 /* LoginVC.swift */; };
@@ -51,6 +52,7 @@
 		72782DB225F4B6370046D415 /* MyGroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyGroupTableViewCell.swift; path = Ryan/MyGroupTableViewCell.swift; sourceTree = "<group>"; };
 		72782DB825F4B6810046D415 /* MemberVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberVC.swift; sourceTree = "<group>"; };
 		72782DBA25F4B6810046D415 /* AccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountVC.swift; sourceTree = "<group>"; };
+		727DF5EC25FF6DEB001BE9BE /* TabBC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBC.swift; sourceTree = "<group>"; };
 		72810EFB25FA11A2004BDF57 /* AccountEditVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountEditVC.swift; sourceTree = "<group>"; };
 		72F87D1F25F72F6200C4AB51 /* NotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		72F87D2225F72FC400C4AB51 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				7245E28B25FF24C600B1204A /* FriendNotificationCell.swift */,
 				7245E28C25FF24C600B1204A /* PartyNotificationCell.swift */,
 				72F87D1F25F72F6200C4AB51 /* NotificationCell.swift */,
+				727DF5EC25FF6DEB001BE9BE /* TabBC.swift */,
 			);
 			path = Jack;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				727DF5ED25FF6DEB001BE9BE /* TabBC.swift in Sources */,
 				94E1874325E4ABD900ECF653 /* MyGroupViewController.swift in Sources */,
 				7245E28D25FF24C600B1204A /* FriendNotificationCell.swift in Sources */,
 				94E08D4C25BADE240013E403 /* AppDelegate.swift in Sources */,
