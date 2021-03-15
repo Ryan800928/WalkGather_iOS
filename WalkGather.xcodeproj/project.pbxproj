@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C018E0BFB1597E6971DC152 /* Pods_WalkGather.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEDA80E5F408D6E50227B4F7 /* Pods_WalkGather.framework */; };
 		7245E28D25FF24C600B1204A /* FriendNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7245E28B25FF24C600B1204A /* FriendNotificationCell.swift */; };
 		7245E28E25FF24C600B1204A /* PartyNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7245E28C25FF24C600B1204A /* PartyNotificationCell.swift */; };
 		7245E29225FF24D400B1204A /* PartyNotificationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7245E29025FF24D400B1204A /* PartyNotificationTVC.swift */; };
 		7245E29325FF24D400B1204A /* FriendNotificationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7245E29125FF24D400B1204A /* FriendNotificationTVC.swift */; };
 		7245E29625FF24E700B1204A /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7245E29525FF24E700B1204A /* Party.swift */; };
+		7245E2A125FF3A7000B1204A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7245E2A025FF3A7000B1204A /* GoogleService-Info.plist */; };
 		7274C53225F0ABC3004F28FB /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274C53125F0ABC3004F28FB /* Member.swift */; };
 		72782DB325F4B6370046D415 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DB125F4B6370046D415 /* GroupTableViewCell.swift */; };
 		72782DB425F4B6370046D415 /* MyGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DB225F4B6370046D415 /* MyGroupTableViewCell.swift */; };
@@ -43,6 +45,7 @@
 		7245E29025FF24D400B1204A /* PartyNotificationTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyNotificationTVC.swift; sourceTree = "<group>"; };
 		7245E29125FF24D400B1204A /* FriendNotificationTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendNotificationTVC.swift; sourceTree = "<group>"; };
 		7245E29525FF24E700B1204A /* Party.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
+		7245E2A025FF3A7000B1204A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7274C53125F0ABC3004F28FB /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		72782DB125F4B6370046D415 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupTableViewCell.swift; path = Ryan/GroupTableViewCell.swift; sourceTree = "<group>"; };
 		72782DB225F4B6370046D415 /* MyGroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyGroupTableViewCell.swift; path = Ryan/MyGroupTableViewCell.swift; sourceTree = "<group>"; };
@@ -66,6 +69,7 @@
 		94E08D5925BADE280013E403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94E1873325E3C78200ECF653 /* JoinGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewController.swift; sourceTree = "<group>"; };
 		94E1874225E4ABD900ECF653 /* MyGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGroupViewController.swift; sourceTree = "<group>"; };
+		FEDA80E5F408D6E50227B4F7 /* Pods_WalkGather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalkGather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C018E0BFB1597E6971DC152 /* Pods_WalkGather.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,6 +127,7 @@
 		73FC56C5DD1330DD52E7626E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FEDA80E5F408D6E50227B4F7 /* Pods_WalkGather.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -237,6 +243,7 @@
 				94E08D5425BADE280013E403 /* Assets.xcassets */,
 				94E08D5625BADE280013E403 /* LaunchScreen.storyboard */,
 				94E08D5925BADE280013E403 /* Info.plist */,
+				7245E2A025FF3A7000B1204A /* GoogleService-Info.plist */,
 			);
 			path = WalkGather;
 			sourceTree = "<group>";
@@ -286,6 +293,8 @@
 				94E08D4425BADE240013E403 /* Sources */,
 				94E08D4525BADE240013E403 /* Frameworks */,
 				94E08D4625BADE240013E403 /* Resources */,
+				C755C4C341D1AA4296CDDABD /* [CP] Embed Pods Frameworks */,
+				7B0EA621AD3FA33225718C96 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -335,6 +344,7 @@
 			files = (
 				94E08D5825BADE280013E403 /* LaunchScreen.storyboard in Resources */,
 				94E08D5525BADE280013E403 /* Assets.xcassets in Resources */,
+				7245E2A125FF3A7000B1204A /* GoogleService-Info.plist in Resources */,
 				94E08D5325BADE240013E403 /* Main.storyboard in Resources */,
 				9489A67725F2696800DD830E /* Jack.storyboard in Resources */,
 			);
@@ -343,6 +353,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		7B0EA621AD3FA33225718C96 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WalkGather/Pods-WalkGather-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BF3B7DF7FD20B6BCBDB09875 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -363,6 +388,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C755C4C341D1AA4296CDDABD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WalkGather/Pods-WalkGather-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -552,6 +592,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TYHA8NFL49;
 				INFOPLIST_FILE = WalkGather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -572,6 +613,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TYHA8NFL49;
 				INFOPLIST_FILE = WalkGather/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

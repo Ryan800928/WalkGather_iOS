@@ -17,4 +17,7 @@ target 'WalkGather' do
 	# pod 'Floaty', '~> 4.2.0'
   # Pods for WalkGather
 
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
+
 end

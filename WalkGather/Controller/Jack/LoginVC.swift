@@ -6,17 +6,21 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, GIDSignInDelegate {
     
-    var member : Member!
-        
     let url_server = URL(string: common_url + "MemberServlet")
+    var member : Member!
+    var auth: Auth!
+    var gidSignIn: GIDSignIn!
+    
     
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
+    @IBOutlet weak var signInButton: GIDSignInButton!
     
-        
     @IBAction func btLogin(_ sender: Any) {
             
     let email = tfEmail.text == nil ? "" :
@@ -49,35 +53,75 @@ class LoginVC: UIViewController {
                                     DispatchQueue.main.async {
                                         self.navigationController?.popViewController(animated: true)
                                     }
-                                    
-                                    print("member_ID \(member.id)")
                                 } catch let err {
                                     print("Decode error: \(err)")
                                 }
                             }
                         }
-//                        self.saveData()
-                        
-//                        if let result = try? JSONDecoder().decode(Login.self, from: data!) {
-//                                DispatchQueue.main.async {
-//                                        self.navigationController?.popViewController(animated: true)
-//                                }
-//                            print("result: \(result)")
-//                            self.login = result
-//                        }
                     }
                 }
             }
         }
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        auth = Auth.auth()
+        gidSignIn = GIDSignIn.sharedInstance()
+        // 設定要跳出登入網頁
+        gidSignIn.presentingViewController = self
+        gidSignIn.clientID = FirebaseApp.app()?.options.clientID
+        gidSignIn.delegate = self
+        
         addKeyboardObserver()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        GIDSignInButton.
+        print("sign(_:didSignInFor)")
+      if let error = error {
+        print("Google sign in error: \(error.localizedDescription)")
+        return
+      }
+
+      guard let authentication = user.authentication else { return }
+      let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
+        signInFirebase(with: credential)
+        
+        saveGoogleData()
     }
+    
+    // 使用Google帳號完成Firebase驗證
+    func signInFirebase(with credential: AuthCredential) {
+        auth.signIn(with: credential) { (authResult, error) in
+            if error == nil {
+                print("Firebase logged in, authResult: \(authResult!)")
+                self.performSegue(withIdentifier: "result", sender: self)
+            } else {
+                print("Firebase login failed, error: \(error!)")
+            }
+        }
+    }
+    
+    
+    func saveGoogleData(){
+        let userDefaults = UserDefaults.standard
+
+        let name = auth.currentUser?.displayName
+        let email = auth.currentUser?.email
+        let phone = auth.currentUser?.phoneNumber
+//        let photo = auth.currentUser?.photoURL
+        
+        userDefaults.set(name, forKey: "name")
+        userDefaults.set(email, forKey: "email")
+        userDefaults.set(phone, forKey: "phone")
+    }
+    
+    
     
     func saveData(){
         let userDefaults = UserDefaults.standard
@@ -106,9 +150,7 @@ class LoginVC: UIViewController {
         userDefaults.set(relation, forKey: "relation")
         userDefaults.set(emergencyPhone, forKey: "emergencyPhone")
         userDefaults.set(imageId, forKey: "ImageId")
-        
-        print("name \(userDefaults.string(forKey: "name"))")
-        
+                
     }
     
 }
