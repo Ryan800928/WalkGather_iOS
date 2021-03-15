@@ -39,9 +39,7 @@ class LoginVC: UIViewController {
                         print("input: \(String(data: data!, encoding: .utf8)!)")
                         
                         if let download = try? JSONDecoder().decode([String : String].self, from: data!){
-                            print("download: \(download)")
                             if let memberStr = download["member"]{
-                                print("memberStr: \(memberStr)")
                                 let memberData = Data(memberStr.utf8)
                                 do {
                                     self.member = try JSONDecoder().decode(Member.self, from: memberData)
@@ -94,6 +92,8 @@ class LoginVC: UIViewController {
         let emergency = member?.emergency
         let relation = member?.relation
         let emergencyPhone = member?.emergencyPhone
+        let imageId = member?.imageId
+        
         
         userDefaults.set(id, forKey: "id")
         userDefaults.set(name, forKey: "name")
@@ -105,6 +105,7 @@ class LoginVC: UIViewController {
         userDefaults.set(emergency, forKey: "emergency")
         userDefaults.set(relation, forKey: "relation")
         userDefaults.set(emergencyPhone, forKey: "emergencyPhone")
+        userDefaults.set(imageId, forKey: "ImageId")
         
         print("name \(userDefaults.string(forKey: "name"))")
         

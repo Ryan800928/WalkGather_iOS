@@ -12,7 +12,6 @@ class MemberVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadData()
     }
     
