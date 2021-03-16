@@ -24,7 +24,7 @@ class Member : Codable {
     var token : Int? = 0
     var image : Data?
     var date : String?
-    var friendId : Int = 0
+    var friendId : Int? = 0
     
     public init() {
         

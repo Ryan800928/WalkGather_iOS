@@ -12,8 +12,6 @@
 		7245E28E25FF24C600B1204A /* PartyNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7245E28C25FF24C600B1204A /* PartyNotificationCell.swift */; };
 		7245E29225FF24D400B1204A /* PartyNotificationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7245E29025FF24D400B1204A /* PartyNotificationTVC.swift */; };
 		7245E29325FF24D400B1204A /* FriendNotificationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7245E29125FF24D400B1204A /* FriendNotificationTVC.swift */; };
-		7245E29625FF24E700B1204A /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7245E29525FF24E700B1204A /* Party.swift */; };
-		7245E2A125FF3A7000B1204A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7245E2A025FF3A7000B1204A /* GoogleService-Info.plist */; };
 		7274C53225F0ABC3004F28FB /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7274C53125F0ABC3004F28FB /* Member.swift */; };
 		72782DB325F4B6370046D415 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DB125F4B6370046D415 /* GroupTableViewCell.swift */; };
 		72782DB425F4B6370046D415 /* MyGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72782DB225F4B6370046D415 /* MyGroupTableViewCell.swift */; };
@@ -36,6 +34,11 @@
 		94E08D5825BADE280013E403 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94E08D5625BADE280013E403 /* LaunchScreen.storyboard */; };
 		94E1873425E3C78300ECF653 /* JoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E1873325E3C78200ECF653 /* JoinGroupViewController.swift */; };
 		94E1874325E4ABD900ECF653 /* MyGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E1874225E4ABD900ECF653 /* MyGroupViewController.swift */; };
+		94E7A53D2600CF1B0012ADBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94E7A53C2600CF1B0012ADBA /* GoogleService-Info.plist */; };
+		94E7A54C2600DB5B0012ADBA /* Ethan in Resources */ = {isa = PBXBuildFile; fileRef = 94E7A54B2600DB5B0012ADBA /* Ethan */; };
+		94E7A5502600DB9D0012ADBA /* NewAddGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E7A54E2600DB9D0012ADBA /* NewAddGroup.swift */; };
+		94E7A5512600DB9D0012ADBA /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E7A54F2600DB9D0012ADBA /* Group.swift */; };
+		94E7A5542600DC4B0012ADBA /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E7A5532600DC4B0012ADBA /* Party.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,8 +48,6 @@
 		7245E28C25FF24C600B1204A /* PartyNotificationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyNotificationCell.swift; sourceTree = "<group>"; };
 		7245E29025FF24D400B1204A /* PartyNotificationTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartyNotificationTVC.swift; sourceTree = "<group>"; };
 		7245E29125FF24D400B1204A /* FriendNotificationTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendNotificationTVC.swift; sourceTree = "<group>"; };
-		7245E29525FF24E700B1204A /* Party.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
-		7245E2A025FF3A7000B1204A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7274C53125F0ABC3004F28FB /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		72782DB125F4B6370046D415 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupTableViewCell.swift; path = Ryan/GroupTableViewCell.swift; sourceTree = "<group>"; };
 		72782DB225F4B6370046D415 /* MyGroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyGroupTableViewCell.swift; path = Ryan/MyGroupTableViewCell.swift; sourceTree = "<group>"; };
@@ -71,6 +72,11 @@
 		94E08D5925BADE280013E403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94E1873325E3C78200ECF653 /* JoinGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewController.swift; sourceTree = "<group>"; };
 		94E1874225E4ABD900ECF653 /* MyGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGroupViewController.swift; sourceTree = "<group>"; };
+		94E7A53C2600CF1B0012ADBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		94E7A54B2600DB5B0012ADBA /* Ethan */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Ethan; sourceTree = "<group>"; };
+		94E7A54E2600DB9D0012ADBA /* NewAddGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAddGroup.swift; sourceTree = "<group>"; };
+		94E7A54F2600DB9D0012ADBA /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		94E7A5532600DC4B0012ADBA /* Party.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
 		FEDA80E5F408D6E50227B4F7 /* Pods_WalkGather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalkGather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -98,7 +104,9 @@
 		7274C52D25F0AB21004F28FB /* Ryan */ = {
 			isa = PBXGroup;
 			children = (
-				7245E29525FF24E700B1204A /* Party.swift */,
+				94E7A5532600DC4B0012ADBA /* Party.swift */,
+				94E7A54F2600DB9D0012ADBA /* Group.swift */,
+				94E7A54E2600DB9D0012ADBA /* NewAddGroup.swift */,
 			);
 			path = Ryan;
 			sourceTree = "<group>";
@@ -110,20 +118,6 @@
 				7274C53125F0ABC3004F28FB /* Member.swift */,
 			);
 			path = Jack;
-			sourceTree = "<group>";
-		};
-		7274C52F25F0AB47004F28FB /* Cheng */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cheng;
-			sourceTree = "<group>";
-		};
-		7274C53025F0AB5F004F28FB /* Ethan */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Ethan;
 			sourceTree = "<group>";
 		};
 		73FC56C5DD1330DD52E7626E /* Frameworks */ = {
@@ -246,7 +240,7 @@
 				94E08D5425BADE280013E403 /* Assets.xcassets */,
 				94E08D5625BADE280013E403 /* LaunchScreen.storyboard */,
 				94E08D5925BADE280013E403 /* Info.plist */,
-				7245E2A025FF3A7000B1204A /* GoogleService-Info.plist */,
+				94E7A53C2600CF1B0012ADBA /* GoogleService-Info.plist */,
 			);
 			path = WalkGather;
 			sourceTree = "<group>";
@@ -277,8 +271,7 @@
 		94E1874025E4A2C400ECF653 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7274C53025F0AB5F004F28FB /* Ethan */,
-				7274C52F25F0AB47004F28FB /* Cheng */,
+				94E7A54B2600DB5B0012ADBA /* Ethan */,
 				7274C52E25F0AB41004F28FB /* Jack */,
 				7274C52D25F0AB21004F28FB /* Ryan */,
 			);
@@ -347,9 +340,10 @@
 			files = (
 				94E08D5825BADE280013E403 /* LaunchScreen.storyboard in Resources */,
 				94E08D5525BADE280013E403 /* Assets.xcassets in Resources */,
-				7245E2A125FF3A7000B1204A /* GoogleService-Info.plist in Resources */,
 				94E08D5325BADE240013E403 /* Main.storyboard in Resources */,
+				94E7A54C2600DB5B0012ADBA /* Ethan in Resources */,
 				9489A67725F2696800DD830E /* Jack.storyboard in Resources */,
+				94E7A53D2600CF1B0012ADBA /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,8 +410,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				727DF5ED25FF6DEB001BE9BE /* TabBC.swift in Sources */,
+				94E7A5542600DC4B0012ADBA /* Party.swift in Sources */,
 				94E1874325E4ABD900ECF653 /* MyGroupViewController.swift in Sources */,
 				7245E28D25FF24C600B1204A /* FriendNotificationCell.swift in Sources */,
+				94E7A5512600DB9D0012ADBA /* Group.swift in Sources */,
 				94E08D4C25BADE240013E403 /* AppDelegate.swift in Sources */,
 				72782DB325F4B6370046D415 /* GroupTableViewCell.swift in Sources */,
 				7245E28E25FF24C600B1204A /* PartyNotificationCell.swift in Sources */,
@@ -425,7 +421,6 @@
 				94E08D4E25BADE240013E403 /* SceneDelegate.swift in Sources */,
 				949A4F3F25CBCD7C00FEBD38 /* NewAddGroupViewController.swift in Sources */,
 				72782DB425F4B6370046D415 /* MyGroupTableViewCell.swift in Sources */,
-				7245E29625FF24E700B1204A /* Party.swift in Sources */,
 				72F87D2525F72FC400C4AB51 /* RegisterVC.swift in Sources */,
 				94E1873425E3C78300ECF653 /* JoinGroupViewController.swift in Sources */,
 				941360AE25C0149400953BE2 /* GroupViewController.swift in Sources */,
@@ -437,6 +432,7 @@
 				7274C53225F0ABC3004F28FB /* Member.swift in Sources */,
 				7245E29225FF24D400B1204A /* PartyNotificationTVC.swift in Sources */,
 				72782DBD25F4B6810046D415 /* MemberVC.swift in Sources */,
+				94E7A5502600DB9D0012ADBA /* NewAddGroup.swift in Sources */,
 				72F87D2025F72F6200C4AB51 /* NotificationCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
