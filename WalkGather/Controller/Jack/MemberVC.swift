@@ -11,36 +11,21 @@ import Firebase
 
 class MemberVC: UIViewController {
     
-    let url_server = URL(string: common_url + "MemberServlet")
+    let url_serverMember = URL(string: common_url + "MemberServlet")
+    let url_serverImage = URL(string: common_url + "ImageServlet")
     
     @IBOutlet weak var lbNickName: UILabel!
     @IBOutlet weak var ivAvatar: UIImageView!
     
     override func viewWillAppear(_ animated: Bool) {
-        let userDefaults = UserDefaults.standard
-        
-        if userDefaults.integer(forKey: "id") >= 1 {
-        }else{
-            let alert = UIAlertController(title: "遊客", message: "請登入", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "確定", style: .default) { (_) in
-                if let con =  self.storyboard?.instantiateViewController(withIdentifier: "Login"){
-                    self.present(con, animated: true, completion: nil)
-                    
-                }
-            }
-            
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
-        }
-        
         loadData()
 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        lbNickName.text = ""
         getAvatar()
-        loadData()
     }
     
     
@@ -59,6 +44,11 @@ class MemberVC: UIViewController {
         userDefaults.dictionaryRepresentation().forEach { (key, _) in
             userDefaults.removeObject(forKey: key)
         }
+        
+        ivAvatar.image = UIImage(named: "nobody.jpg")
+        lbNickName.text = ""
+        
+        loadData()
     }
     
     
@@ -89,11 +79,11 @@ class MemberVC: UIViewController {
         
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
-        requestParam["id"] = userDefaults.integer(forKey: "id")
+        requestParam["imageId"] = userDefaults.integer(forKey: "imageId")
         requestParam["imageSize"] = ivAvatar.frame.width
         
         var image: UIImage?
-        executeTask(url_server!, requestParam) { (data, response, error) in
+        executeTask(url_serverImage!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
                     image = UIImage(data: data!)
@@ -115,10 +105,22 @@ class MemberVC: UIViewController {
     func loadData(){
         let userDefaults = UserDefaults.standard
         
+        if userDefaults.integer(forKey: "id") >= 1 {
+        }else{
+            let alert = UIAlertController(title: "遊客", message: "請登入", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "確定", style: .default) { (_) in
+                if let con =  self.storyboard?.instantiateViewController(withIdentifier: "Login"){
+                    
+                    self.present(con, animated: true, completion: nil)
+                }
+            }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+        }
+        
         if let image = userDefaults.data(forKey: "avatar"){
             ivAvatar.image = UIImage(data: image)
         }
-        
         if let nickName = userDefaults.string(forKey: "nickname") {
             lbNickName.text = nickName
         }

@@ -16,7 +16,7 @@ class AccountEditVC: UIViewController, UIImagePickerControllerDelegate & UINavig
     let url_serverMember = URL(string: common_url + "MemberServlet")
     let url_serverImage = URL(string: common_url + "ImageServlet")
     let datePicker = UIDatePicker()
-
+    
     @IBOutlet weak var ivAvatar: UIImageView!
     @IBOutlet weak var tfName: UITextField!
     @IBOutlet weak var tfNickName: UITextField!
@@ -38,7 +38,7 @@ class AccountEditVC: UIViewController, UIImagePickerControllerDelegate & UINavig
     
     @IBAction func clickPickImage(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
-
+        
         imagePicker.delegate = self
         /* 照片來源為相簿 */
         imagePicker.sourceType = .photoLibrary
@@ -71,7 +71,7 @@ class AccountEditVC: UIViewController, UIImagePickerControllerDelegate & UINavig
             tfRelation.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if  name != "" || nickname != "" ||
-            phone != "" || emergency != "" || emergencyPhone != "" || relation != ""{
+                phone != "" || emergency != "" || emergencyPhone != "" || relation != ""{
             
             let member = Member(id:id, name:name, nickname:nickname, birthday:birthday, phone:phone, emergency:emergency, emergencyPhone:emergencyPhone, relation:relation)
             print("birthday: \(String(describing: birthday))")
@@ -107,11 +107,9 @@ class AccountEditVC: UIViewController, UIImagePickerControllerDelegate & UINavig
             let ok = UIAlertAction (title: "確定", style: .default)
             alert.addAction(ok)
             present(alert, animated: true, completion: nil)
+        }
     }
-}
         
-    
-    
     
     
     
@@ -157,8 +155,6 @@ class AccountEditVC: UIViewController, UIImagePickerControllerDelegate & UINavig
     
     
 }
-
-
 
 
 
@@ -226,10 +222,12 @@ extension AccountEditVC {
                             print("count: \(count)")
                             DispatchQueue.main.async {
                                 if count != 0 {
-                                    print("setImage Success")
+                                    userDefaults.set(count, forKey: "imageId")
                                     if let avatar = self.image?.jpegData(compressionQuality: 1.0){
                                         userDefaults.set(avatar, forKey: "avatar")
                                     }
+                                    
+                                    print("setImage Success")
                                 }
                             else{
                                 print("SetImage Fail")
@@ -242,11 +240,15 @@ extension AccountEditVC {
                 print(error!.localizedDescription)
             }
         }
-    
     }
     
-    
+}
 
+
+
+
+
+extension AccountEditVC {
     
     func addKeyboardObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)

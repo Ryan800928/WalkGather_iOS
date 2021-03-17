@@ -22,13 +22,13 @@ class LoginVC: UIViewController, GIDSignInDelegate {
     @IBOutlet weak var signInButton: GIDSignInButton!
     
     @IBAction func btLogin(_ sender: Any) {
-            
+                    
     let email = tfEmail.text == nil ? "" :
             tfEmail.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = tfPassword.text == nil ? "" :
             tfPassword.text!.trimmingCharacters(in: .whitespacesAndNewlines)
 
-        if email != "" || password != "" {
+        if  validateEmail(email: email) != false || password != "" {
             let member = Member(email: email, password: password)
 
             var requestParam = [String: String]()
@@ -62,8 +62,13 @@ class LoginVC: UIViewController, GIDSignInDelegate {
                     }
                 }
             }
+        }else{
+            let alert = UIAlertController(title: "遊客", message: "請登入", preferredStyle: .alert)
+            present(alert, animated: true, completion: nil)
         }
     }
+
+
     
     
     
@@ -153,7 +158,7 @@ class LoginVC: UIViewController, GIDSignInDelegate {
         userDefaults.set(emergency, forKey: "emergency")
         userDefaults.set(relation, forKey: "relation")
         userDefaults.set(emergencyPhone, forKey: "emergencyPhone")
-        userDefaults.set(imageId, forKey: "ImageId")
+        userDefaults.set(imageId, forKey: "imageId")
                 
     }
     
@@ -162,6 +167,16 @@ class LoginVC: UIViewController, GIDSignInDelegate {
 
 
 extension LoginVC {
+    
+    func validateEmail(email: String) -> Bool {
+            if email.count == 0 {
+                return false
+            }
+            let emailRegex = "[A-Z0-9a-z._%+-][email protected][A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+            let emailTest:NSPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+            return emailTest.evaluate(with: email)
+        }
+    
     func addKeyboardObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)

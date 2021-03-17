@@ -10,8 +10,8 @@ import UIKit
 class AccountVC: UIViewController {
     let userDefaults = UserDefaults.standard
     
-    
-    let url_server = URL(string: common_url + "MemberServlet")
+    let url_serverMember = URL(string: common_url + "MemberServlet")
+    let url_serverImage = URL(string: common_url + "ImageServlet")
     
     @IBOutlet weak var ivAvatar: UIImageView!
     @IBOutlet weak var lbName: UILabel!
@@ -44,11 +44,11 @@ class AccountVC: UIViewController {
         
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
-        requestParam["id"] = userDefaults.integer(forKey: "id")
+        requestParam["imageId"] = userDefaults.integer(forKey: "imageId")
         requestParam["imageSize"] = ivAvatar.frame.width
         
         var image: UIImage?
-        executeTask(url_server!, requestParam) { (data, response, error) in
+        executeTask(url_serverImage!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
                     image = UIImage(data: data!)
