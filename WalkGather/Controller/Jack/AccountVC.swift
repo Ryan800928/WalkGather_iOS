@@ -8,6 +8,12 @@
 import UIKit
 
 class AccountVC: UIViewController {
+    let userDefaults = UserDefaults.standard
+    
+    
+    let url_server = URL(string: common_url + "MemberServlet")
+    
+    @IBOutlet weak var ivAvatar: UIImageView!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var lbNickName: UILabel!
     @IBOutlet weak var lbBirthday: UILabel!
@@ -19,17 +25,55 @@ class AccountVC: UIViewController {
     @IBOutlet weak var lbRelation: UILabel!
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewWillAppear(_ animated: Bool) {
+
         loadData()
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+
+        getAvatar()
+        loadData()
+    }
+    
+    
+    func getAvatar(){
+        let userDefaults = UserDefaults.standard
+        
+        var requestParam = [String: Any]()
+        requestParam["action"] = "getImage"
+        requestParam["id"] = userDefaults.integer(forKey: "id")
+        requestParam["imageSize"] = ivAvatar.frame.width
+        
+        var image: UIImage?
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    image = UIImage(data: data!)
+                    
+                    if image == nil {
+                        image = UIImage(named: "nobody.jpg")
+                    }
+                    DispatchQueue.main.async {
+                        self.ivAvatar.image = image
+                    }
+                }
+            }else {
+                print(error!.localizedDescription)
+            }
+        }
+    }
     
     
     
     func loadData(){
         let userDefaults = UserDefaults.standard
+        
+        if let image = userDefaults.data(forKey: "avatar"){
+            ivAvatar.image = UIImage(data: image)
+        }
         
         if let name = userDefaults.string(forKey: "name") {
             lbName.text = name
@@ -37,8 +81,8 @@ class AccountVC: UIViewController {
         if let nickname = userDefaults.string(forKey: "nickname") {
             lbNickName.text = nickname
         }
-        if let birthday = userDefaults.object(forKey: "birthday"){
-            lbBirthday.text = birthday as? String
+        if let birthday = userDefaults.string(forKey: "birthday"){
+            lbBirthday.text = birthday
         }
         if let email = userDefaults.string(forKey: "email"){
             lbEmail.text = email

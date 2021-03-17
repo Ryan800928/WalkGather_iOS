@@ -7,14 +7,20 @@
 
 import UIKit
 
-class AccountEditVC: UIViewController {
+class AccountEditVC: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
+    var image : UIImage?
+    
+    let  userDefaults = UserDefaults.standard
+    
+    let url_serverMember = URL(string: common_url + "MemberServlet")
+    let url_serverImage = URL(string: common_url + "ImageServlet")
     let datePicker = UIDatePicker()
 
     @IBOutlet weak var ivAvatar: UIImageView!
     @IBOutlet weak var tfName: UITextField!
     @IBOutlet weak var tfNickName: UITextField!
-    @IBOutlet weak var tfBirthday: UITextField!
+    @IBOutlet weak var dpBirthday: UIDatePicker!
     @IBOutlet weak var tfPhone: UITextField!
     @IBOutlet weak var tfEmergency: UITextField!
     @IBOutlet weak var tfEmergencyPhnoe: UITextField!
@@ -29,7 +35,17 @@ class AccountEditVC: UIViewController {
     var emergencyPhone : String = ""
     var relation : String = ""
     
-    let url_server = URL(string: common_url + "MemberServlet")
+    
+    @IBAction func clickPickImage(_ sender: UIButton) {
+        let imagePicker = UIImagePickerController()
+
+        imagePicker.delegate = self
+        /* 照片來源為相簿 */
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion: nil)
+        
+    }
+    
     
     @IBAction func clickEdit(_ sender: Any) {
         let userDefaults = UserDefaults.standard
@@ -40,7 +56,11 @@ class AccountEditVC: UIViewController {
             tfName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         nickname = tfNickName.text == nil ? "" :
             tfNickName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        birthday = tfBirthday.text!
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd hh:mm:ss"
+        birthday = formatter.string(from: dpBirthday.date)
+        
         phone = tfPhone.text == nil ? "" :
             tfPhone.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         emergency = tfEmergency.text == nil ? "" :
@@ -50,28 +70,27 @@ class AccountEditVC: UIViewController {
         relation = tfRelation.text == nil ? "" :
             tfRelation.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if  name != "" || nickname != "" || birthday != "" ||
+        if  name != "" || nickname != "" ||
             phone != "" || emergency != "" || emergencyPhone != "" || relation != ""{
             
             let member = Member(id:id, name:name, nickname:nickname, birthday:birthday, phone:phone, emergency:emergency, emergencyPhone:emergencyPhone, relation:relation)
+            print("birthday: \(String(describing: birthday))")
             
             var requestParam = [String: String]()
             
             requestParam["action"] = "memberUpdate"
             requestParam["member"] = try! String(data: JSONEncoder().encode(member), encoding: .utf8)
             
-            executeTask(self.url_server!, requestParam) { (data, response, error) in
+            executeTask(self.url_serverMember!, requestParam) { (data, response, error) in
                 if error == nil {
                     if data != nil {
                         if let result = String(data: data!, encoding: .utf8) {
                             if let count = Int(result) {
                                 DispatchQueue.main.async {
-                                    // 新增成功則回前頁
+                                    
                                     if count != 0 {
                                         self.saveData()
-                                        
-                                        self.navigationController?.popToRootViewController(animated: true)
-                                        
+                                        self.navigationController?.popViewController(animated: true)
                                     } else {
                                         print("Update Fail")
                                     }
@@ -83,20 +102,43 @@ class AccountEditVC: UIViewController {
                     print(error!.localizedDescription)
                 }
             }
-        }
-        
+        }else{
+            let alert = UIAlertController(title: "未填寫", message: "請全部填寫完再送出哦～", preferredStyle: .alert)
+            let ok = UIAlertAction (title: "確定", style: .default)
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
     }
+}
+        
+    
     
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        createDatePicker()
-        tfBirthday.adjustsFontSizeToFitWidth = true
-        tfBirthday.text = "選擇生日"
+        getData()
+        getAvatar()
         addKeyboardObserver()
+    }
+    
+    
+    func getData(){
+        let userDefaults = UserDefaults.standard
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd hh:mm:ss"
+
+        tfName.text = userDefaults.string(forKey: "name")
+        tfNickName.text = userDefaults.string(forKey: "nickname")
+        if let birthdayStr = userDefaults.string(forKey: "birthday"), let birthday = formatter.date(from: birthdayStr) {
+            dpBirthday.date = birthday
+        }else{
+            dpBirthday.date = Date()
+        }
+        tfPhone.text = userDefaults.string(forKey: "phone")
+        tfEmergency.text = userDefaults.string(forKey: "emergency")
+        tfEmergencyPhnoe.text = userDefaults.string(forKey: "emergencyPhone")
+        tfRelation.text = userDefaults.string(forKey: "relation")
     }
     
     
@@ -106,7 +148,7 @@ class AccountEditVC: UIViewController {
         userDefaults.set(id, forKey: "id")
         userDefaults.set(name, forKey: "name")
         userDefaults.set(nickname, forKey: "nickname")
-        userDefaults.set(birthday, forKey: "birthday")
+        userDefaults.set(birthday.prefix(10), forKey: "birthday")
         userDefaults.set(phone, forKey: "phone")
         userDefaults.set(emergency, forKey: "emergency")
         userDefaults.set(relation, forKey: "relation")
@@ -122,61 +164,89 @@ class AccountEditVC: UIViewController {
 
 extension AccountEditVC {
     
-    func createDatePicker(){
-            //建立toolbar
-            let toolBar = UIToolbar()
-            toolBar.sizeToFit()
-            toolBar.barStyle = UIBarStyle.default
-            toolBar.isTranslucent = true
-            toolBar.isUserInteractionEnabled = true
-            let doneButton = UIBarButtonItem(title:"完成",style:.done, target: self, action: #selector(donePressed))
-            let spaceButton = UIBarButtonItem(barButtonSystemItem:.flexibleSpace, target: nil, action: nil)
-            let cancelButton = UIBarButtonItem(title: "取消", style:.plain, target: self, action: #selector(cancelPressed))
-            
-            toolBar.setItems([cancelButton,spaceButton,doneButton], animated: true)
-
-        //建立datePicker
-        datePicker.datePickerMode = .date
-        datePicker.preferredDatePickerStyle = .wheels
-        datePicker.backgroundColor = UIColor.white
-        datePicker.locale = Locale(identifier: "zh_TW")
-        tfBirthday.inputAccessoryView = toolBar
-        tfBirthday.inputView = datePicker
-        tfBirthday.textAlignment = .center
+    func getAvatar(){
+        let userDefaults = UserDefaults.standard
+        
+        var requestParam = [String: Any]()
+        requestParam["action"] = "getImage"
+        requestParam["id"] = userDefaults.integer(forKey: "id")
+        requestParam["imageSize"] = ivAvatar.frame.width
+        
+        var image: UIImage?
+        executeTask(url_serverImage!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    image = UIImage(data: data!)
+                    
+                    if image == nil {
+                        image = UIImage(named: "nobody.jpg")
+                    }
+                    DispatchQueue.main.async {
+                        self.ivAvatar.image = image
+                    }
+                }
+            }else {
+                print(error!.localizedDescription)
+            }
+        }
     }
     
-        
-        @objc func donePressed (){
-            let formatter = DateFormatter()
-            formatter.dateStyle = .medium
-            formatter.timeStyle = .none
-            formatter.dateFormat = "yyyy/MM/dd"
-
-            self.tfBirthday.text = formatter.string(from: datePicker.date)
-            self.view.endEditing(true)
-
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        /* 利用指定的key從info dictionary取出照片 */
+        if let pickedImage = info[.originalImage] as? UIImage {
+            ivAvatar.image = pickedImage
+            image = pickedImage
         }
+        imageUpload()
+        dismiss(animated: true)
+    }
+    
+    /* 挑選照片過程中如果按了Cancel，關閉挑選畫面 */
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+    
+    func imageUpload() {
+        let userDefaults = UserDefaults.standard
         
-        @objc func cancelPressed(){
-            tfBirthday.resignFirstResponder()
-            self.view.autoresizesSubviews = false
+        var requestParam = [String: Any]()
+        requestParam["action"] = "setImage"
+        requestParam["id"] = Int(userDefaults.integer(forKey: "id"))
+        if image != nil {
+            requestParam["imageBase64"] = image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
+        }
+        executeTask(url_serverImage!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    if let result = String(data: data!, encoding: .utf8) {
+                        print("data \(String(describing: data))")
+                        if let count = Int(result) {
+                            print("count: \(count)")
+                            DispatchQueue.main.async {
+                                if count != 0 {
+                                    print("setImage Success")
+                                    if let avatar = self.image?.jpegData(compressionQuality: 1.0){
+                                        userDefaults.set(avatar, forKey: "avatar")
+                                    }
+                                }
+                            else{
+                                print("SetImage Fail")
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
         }
     
+    }
+    
+    
 
-
-    
-    
-    
-    
-//    func hideKeyboard() {
-//        tfName.resignFirstResponder()
-//        tfNickName.resignFirstResponder()
-//        tfBirthday.resignFirstResponder()
-//        tfPhone.resignFirstResponder()
-//        tfEmergency.resignFirstResponder()
-//        tfEmergencyPhnoe.resignFirstResponder()
-//        tfRelation.resignFirstResponder()
-//    }
     
     func addKeyboardObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)

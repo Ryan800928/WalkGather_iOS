@@ -51,8 +51,9 @@ class LoginVC: UIViewController, GIDSignInDelegate {
                                     self.saveData()
                                     
                                     DispatchQueue.main.async {
-                                        self.navigationController?.popViewController(animated: true)
-                                    }
+                                        self.dismiss(animated: true, completion: nil)
+                                        }
+                                    
                                 } catch let err {
                                     print("Decode error: \(err)")
                                 }

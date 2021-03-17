@@ -26,9 +26,7 @@ class FriendNotificationTVC: UITableViewController {
 //        let imageId = Int(userDefaults.string(forKey: "imageId") ?? "" )!
         let imageId = userDefaults.integer(forKey: "imageId")
         
-        
         let member = Member(id:id, imageId:imageId)
-        
         
         var requestParam = [String: Any]()
         requestParam["action"] = "friendNotification"
@@ -53,7 +51,7 @@ class FriendNotificationTVC: UITableViewController {
                                             member.name = dic["name"] as? String
                                                     member.image = Data(base64Encoded: dic["image"] as! String)
                                             member.date = dic["date"] as? String
-                                                    member.friendId = dic["friendId"] as! Int
+                                            member.friendId = dic["friendId"] as? Int
                                                     self.members.append(member)                                          
                                             }
                                         }
@@ -76,7 +74,6 @@ class FriendNotificationTVC: UITableViewController {
                                     }
                                     self.tableView.reloadData()
                                 }
-                            
                         }
                     }
                 }
