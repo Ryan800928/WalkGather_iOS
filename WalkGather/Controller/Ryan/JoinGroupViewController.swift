@@ -8,6 +8,7 @@
 import UIKit
 
 class JoinGroupViewController: UIViewController {
+    var newaddGroup:NewAddGroup!
     var walkImage = ["volcanic","xiangshan","yushan","xiangshan","xiangshan","xiangshan"]
     var groupHost = ["Ryan","羅志祥","EDGE","CENA"]
     var launchDate = ["2021年2月23日","2021年2月24日","2021年2月25日","2021年2月23日"]

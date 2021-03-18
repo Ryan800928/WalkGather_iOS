@@ -10,6 +10,8 @@ import UIKit
 class NewAddGroupViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate{
     
     @IBOutlet weak var walkCoverImage: UIImageView!
+    @IBOutlet weak var newAddFinishButton: UIButton!
+    
     @IBOutlet weak var newAddGroupDate: UIDatePicker!
     
     @IBOutlet weak var normalSwitch: UISwitch!
@@ -24,7 +26,7 @@ class NewAddGroupViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var hikingShoesSwitch: UISwitch!
     @IBOutlet weak var waterproofBagSwitch: UISwitch!
     
-    @IBOutlet weak var newAddFinishButton: UIButton!
+    
     
     @IBOutlet weak var joinGroupTitleTextField: UITextField!
     @IBOutlet weak var numberOfPeopleTextField: UITextField!
@@ -33,29 +35,29 @@ class NewAddGroupViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var urgentContactPersonTextField: UITextField!
     @IBOutlet weak var urgentContactPersonPhoneNumberTextField: UITextField!
     
+    
     var id:Int = 0
-    var groupTitle:String = ""
-    var numberOfPeople:Int?
-    var groupDate:Date?
-    var groupCoverImage:UIImage?
+    var groupTitle:String? = ""
+    var number:String? = ""
+    var date:String? = ""
     //    var mapID:Int = 0
-    //    var member:Int = 0
+        var memberId:Int = 0
     //    var check:Int = 0
     //    var status:Int = 0
     //    var registrationBegins:Date?
     //    var endOfRegistration:Date?
     //    var startTheParty:Date?
     //    var endOfTheParty:Date?
-    var musterLocation:String = ""
-    var walkEntrance:String = ""
-    var urgentContactPerson:String = ""
-    var urgentContactPersonPhoneNumber:Int?
+    var musterLocation:String? = ""
+    var walkEntrance:String? = ""
+    var urgentContactPerson:String? = ""
+    var urgentContactPersonPhoneNumber:String? = ""
     var walkType:Int?
     var walkLevel:Int?
     var equipment:Int?
     
     let url_sever = URL(string: common_url + "PartyServlet")
-    
+    let url_serverImage = URL(string: common_url + "ImageServlet")
     var image : UIImage?
     
     //地形難易按鈕功能
@@ -122,6 +124,12 @@ class NewAddGroupViewController: UIViewController,UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        createDate()
+        
+        if Locale.current.description.contains("TW") {
+            newAddGroupDate.locale = Locale(identifier: "zh_TW")
+        }
         
         joinGroupTitleTextField.delegate = self
         numberOfPeopleTextField.delegate = self
@@ -201,40 +209,39 @@ class NewAddGroupViewController: UIViewController,UIImagePickerControllerDelegat
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
     }
-    //宣告照片選擇控制
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let spotImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-            image = spotImage
-            walkCoverImage.image = spotImage
-        }
-        dismiss(animated: true, completion: nil)
-    }
-    //圖像選擇器控制器沒有取消
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
+    
     @IBAction func newAddFinish(_ sender: Any) {
         
         
         
         let userDefaults = UserDefaults.standard
         
-        id = userDefaults.integer(forKey: "id")
+        memberId = userDefaults.integer(forKey: "id")
         
         groupTitle = joinGroupTitleTextField.text == nil ? "" :joinGroupTitleTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         musterLocation = musterLocationTextField.text == nil ? "" :musterLocationTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         walkEntrance = walkEntranceTextField.text == nil ? "" :walkEntranceTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         urgentContactPerson = urgentContactPersonTextField.text == nil ? "" :urgentContactPersonTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        number = numberOfPeopleTextField.text == nil ? "":numberOfPeopleTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        urgentContactPersonPhoneNumber = urgentContactPersonPhoneNumberTextField.text  == nil ? "":urgentContactPersonPhoneNumberTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        date = formatter.string(from: newAddGroupDate.date)
         
-        if groupTitle != "" || musterLocation != "" || walkEntrance != "" || urgentContactPerson != ""{
+        if groupTitle != "" || musterLocation != "" || walkEntrance != "" ||  urgentContactPerson != "" || number != "" || urgentContactPersonPhoneNumber != "" {
             
-            let party = NewAddGroup(id: id, title: groupTitle, number: numberOfPeople, groupDate: groupDate, musterLocation: musterLocation, walkEntrance: walkEntrance, urgentContactPerson: urgentContactPerson, urgentContactPersonPhoneNumber: urgentContactPersonPhoneNumber, walkType: walkType, walkLevel: walkLevel, equipment: equipment)
+            let party = NewAddGroup(id: id, title: groupTitle!, number: number!, date: date!, musterLocation: musterLocation!, walkEntrance: walkEntrance!, urgentContactPerson: urgentContactPerson!, urgentContactPersonPhoneNumber: urgentContactPersonPhoneNumber!, walkType: walkType, walkLevel: walkLevel, equipment: equipment)
             
             var requestParam = [String:String]()
+            let encoder = JSONEncoder()
+            let format = DateFormatter()
+            format.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            encoder.dateEncodingStrategy = .formatted(format)
             
             requestParam["action"] = "partyCreate"
-            requestParam["party"] = try? String(data:JSONEncoder().encode(party),encoding: .utf8)
+            requestParam["party"] = try? String(data:encoder.encode(party),encoding: .utf8)
+            
             //有圖才傳
             if self.image != nil {
                 requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
@@ -248,9 +255,8 @@ class NewAddGroupViewController: UIViewController,UIImagePickerControllerDelegat
                                     //新增成功後到頁面
                                     if count != 0{
                                         self.saveDate()
-                                        let MyGroupViewController = self.storyboard?.instantiateViewController(withIdentifier: "UIViewController-ORv-Xr-Maz") as! MyGroupViewController
-                                            self.present(MyGroupViewController, animated: true, completion: nil)
-//                                        self.navigationController?.popViewController(animated: true)
+                                        self.navigationController?.popViewController(animated: true)
+                                        
                                     }else {
                                         print("Update Fail")
                                     }
@@ -285,15 +291,30 @@ class NewAddGroupViewController: UIViewController,UIImagePickerControllerDelegat
             walkLevel = 3
         }
         
-        
+        func getData(){
+            let userDefaults = UserDefaults.standard
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy/MM/dd hh:mm:ss"
+            joinGroupTitleTextField.text = userDefaults.string(forKey: "groupTitle")
+            numberOfPeopleTextField.text = userDefaults.string(forKey: "number")
+            if let groupDateStr = userDefaults.string(forKey: "date"), let groupDate = formatter.date(from: groupDateStr) {
+                newAddGroupDate.date = groupDate
+            }else{
+                newAddGroupDate.date = Date()
+            }
+            musterLocationTextField.text = userDefaults.string(forKey: "musterLocation")
+            walkEntranceTextField.text = userDefaults.string(forKey: "walkEntrance")
+            urgentContactPersonTextField.text = userDefaults.string(forKey: "urgentContactPerson")
+            urgentContactPersonPhoneNumberTextField.text = userDefaults.string(forKey: "urgentContactPersonPhoneNumber")
+        }
     }
     func saveDate(){
         let userDefaults = UserDefaults.standard
-        userDefaults.set(id, forKey: "id")
+        
+        userDefaults.set(memberId, forKey: "memberId")
         userDefaults.set(groupTitle,forKey: "groupTitle")
-        userDefaults.set(numberOfPeople,forKey: "numberOfPeople")
-        userDefaults.set(groupCoverImage, forKey: "groupCoverImage")
-        userDefaults.set(groupDate, forKey: "groupDate")
+        userDefaults.set(number,forKey: "number")
+        userDefaults.set(date, forKey: "date")
         userDefaults.set(musterLocation,forKey: "musterLocation")
         userDefaults.set(walkEntrance, forKey: "walkEntrance")
         userDefaults.set(urgentContactPerson, forKey: "urgentContactPerson")
@@ -302,8 +323,104 @@ class NewAddGroupViewController: UIViewController,UIImagePickerControllerDelegat
         userDefaults.set(walkLevel, forKey: "walkLevel")
         userDefaults.set(equipment, forKey: "equipment")
     }
+    @IBAction func createDate() {
+        /* 準備格式化物件(中日期、短時間格式) */
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.locale = newAddGroupDate.locale
+//        print("Locale.current: \(Locale.current)")
+//        dateFormatter.dateStyle = .medium
+//        dateFormatter.timeStyle = .short
+//        /* date屬性可以取得/設定datePicker目前的日期 */
+//        dateFormatter.string(from: newAddGroupDate.date)
+        print(newAddGroupDate!)
+//        date = newAddGroupDate.date
+         
+    }
+    
+    
 }
 extension NewAddGroupViewController {
+    
+    func getCover(){
+        let userDefaults = UserDefaults.standard
+        
+        var requestParam = [String: Any]()
+        requestParam["action"] = "getImage"
+        requestParam["imageId"] = userDefaults.integer(forKey: "imageId")
+        requestParam["imageSize"] = walkCoverImage.frame.width
+        
+        var image: UIImage?
+        executeTask(url_serverImage!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    image = UIImage(data: data!)
+                    
+                    if image == nil {
+                        image = UIImage(named: "nobody.jpg")
+                    }
+                    DispatchQueue.main.async {
+                        self.walkCoverImage.image = image
+                    }
+                }
+            }else {
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    //宣告照片選擇控制
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        /* 利用指定的key從info dictionary取出照片 */
+        if let pickedImage = info[.originalImage] as? UIImage {
+            walkCoverImage.image = pickedImage
+            image = pickedImage
+        }
+        imageUpload()
+        dismiss(animated: true)
+        }
+        
+    
+    //圖像選擇器控制器沒有取消
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+    
+    func imageUpload() {
+        let userDefaults = UserDefaults.standard
+        
+        var requestParam = [String: Any]()
+        requestParam["action"] = "setImage"
+        requestParam["id"] = Int(userDefaults.integer(forKey: "id"))
+        if image != nil {
+            requestParam["imageBase64"] = image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
+        }
+        executeTask(url_serverImage!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    if let result = String(data: data!, encoding: .utf8) {
+                        print("data \(String(describing: data))")
+                        if let count = Int(result) {
+                            print("count: \(count)")
+                            DispatchQueue.main.async {
+                                if count != 0 {
+                                    print("setImage Success")
+                                    if let cover = self.image?.jpegData(compressionQuality: 1.0){
+                                        userDefaults.set(cover, forKey: "cover")
+                                    }
+                                }
+                            else{
+                                print("SetImage Fail")
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+    
+    }
     //鍵盤按return鍵盤消失(目前無反應)
     func hideKeyboard(_ textField: UITextField) -> Bool {
         joinGroupTitleTextField.resignFirstResponder()

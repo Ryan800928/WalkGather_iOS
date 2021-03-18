@@ -5,8 +5,12 @@ import UIKit
 
 class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
+    var newAddGroups = [NewAddGroup]()
+    let url_server = URL(string: common_url + "PartyServlet")
+    
+    
     @IBOutlet weak var groupTableView: UITableView!
-    var walkImage = ["volcanic","xiangshan","yushan","xiangshan","xiangshan","xiangshan"]
+    var walkImage = ["xiangshan","volcanic","yushan","xiangshan","volcanic","yushan"]
     var groupHost = ["Ryan","羅志祥","EDGE","CENA"]
     var launchDate = ["2021年2月23日","2021年2月24日","2021年2月25日","2021年2月23日"]
     var numberOfPeople = ["3","6","2","4"]
@@ -55,10 +59,46 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
         
         createPicker()
+
         
         
         
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        showAllGroup()
+    }
+    @objc func showAllGroup() {
+        let requestParam = ["action" : "allPartys"]
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    // 將輸入資料列印出來除錯用
+                    print("input: \(String(data: data!, encoding: .utf8)!)")
+                    
+                    do{
+                        let result = try JSONDecoder().decode([NewAddGroup].self, from: data!)
+                        self.newAddGroups = result
+                        print("result : \(result)" )
+                        DispatchQueue.main.async {
+                            if let control = self.groupTableView.refreshControl {
+                                if control.isRefreshing {
+                                    // 停止下拉更新動作
+                                    control.endRefreshing()
+                                }
+                            }
+                            /* 抓到資料後重刷table view */
+                            self.groupTableView.reloadData()
+                        }
+                    
+                    }catch let err{
+                        print("error \(err)")
+                    }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
     }
     //將PickerView加入上方工具欄
     func createPicker(){
@@ -84,24 +124,71 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     @objc func donePressed(){
         self.view.endEditing(true)
     }
-    
+    /* UITableViewDataSource的方法，定義表格的區塊數，預設值為1 */
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
     //顯示TableVIewCell表格幾列
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return newAddGroups.count
     }
+    
+    
+    
     //顯示TableViewCell資料
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! GroupTableViewCell
-        cell.walkImage.image = UIImage(named: walkImage[indexPath.row])
-        cell.groupNameLabel.text = groupName[indexPath.row]
-        cell.groupDateLabel.text = launchDate[indexPath.row]
-        cell.numberOfPeopleLabel.text = numberOfPeople[indexPath.row]
-        cell.groupHostLabel.text = groupHost[indexPath.row]
+        let cellId = "cell"
+        // tableViewCell預設的imageView點擊後會改變尺寸，所以建立UITableViewCell子類別SpotCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! GroupTableViewCell
+        let newAddGroup = newAddGroups[indexPath.row]
+        
+        // 尚未取得圖片，另外開啟task請求
+        var requestParam = [String: Any]()
+        requestParam["action"] = "getImage"
+        requestParam["imageId"] = newAddGroup.imageId
+        print(newAddGroup.imageId)
+        requestParam["imageSize"] = cell.walkImage.frame.width
+        // 圖片寬度為tableViewCell的1/4，ImageView的寬度也建議在storyboard加上比例設定的constraint
+        var image: UIImage?
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    image = UIImage(data: data!)
+                    
+                }
+                if image == nil {
+                    image = UIImage(named: "noImage.jpg")
+                }
+//                DispatchQueue.main.async { cell.walkImage.image = image }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+        
+        cell.groupNameLabel.text = newAddGroup.title
+        print("newAddGroup: \(newAddGroup.title)")
+        cell.groupDateLabel.text = newAddGroup.date
+        cell.numberOfPeopleLabel.text = newAddGroup.number
+        cell.musterLocationLabel.text = newAddGroup.musterLocation
+        cell.walkImage.image = UIImage (named: walkImage[indexPath.row])
         
         return cell
+    }
+    //日期 -> 字符串
+    func date2String(_ date:Date, dateFormat:String = "yyyy-MM-dd HH:mm:ss") -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.init(identifier: "zh_TW")
+        formatter.dateFormat = dateFormat
+        
+        let date = formatter.string(from: date)
+        print("date : + \(date)")
+        print(" formatter: + \( formatter)")
+        return date
         
     }
+    
+    
 }
 extension GroupViewController : UIPickerViewDataSource,UIPickerViewDelegate{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

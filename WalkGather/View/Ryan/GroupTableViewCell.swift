@@ -12,7 +12,8 @@ class GroupTableViewCell: UITableViewCell {
     @IBOutlet weak var groupNameLabel: UILabel!
     @IBOutlet weak var groupDateLabel: UILabel!
     @IBOutlet weak var numberOfPeopleLabel: UILabel!
-    @IBOutlet weak var groupHostLabel: UILabel!
+    @IBOutlet weak var musterLocationLabel: UILabel!
+    
     
     
     override func awakeFromNib() {

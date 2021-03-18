@@ -11,11 +11,11 @@ struct NewAddGroup:Codable {
     
     var id:Int = -1
     var title:String
-    var number:Int?
-    var groupDate:Date?
-    var groupCoverImage:String?
+    var number:String?
+    var date:String?
+    var imageId:Int?
 //    var mapID:Int?
-//    var member:Int?
+    var memberId:Int?
 //    var check:Int?
 //    var status:Int?
 //    var registrationBegins:Date?
@@ -25,17 +25,17 @@ struct NewAddGroup:Codable {
     var musterLocation:String
     var walkEntrance:String
     var urgentContactPerson:String
-    var urgentContactPersonPhoneNumber:Int?
+    var urgentContactPersonPhoneNumber:String?
     var walkType:Int?
     var walkLevel:Int?
     var equipment:Int?
     
-    internal init(id: Int = -1, title: String, number: Int? = nil, groupDate: Date? = nil, groupCoverImage: String? = nil, musterLocation: String, walkEntrance: String, urgentContactPerson: String, urgentContactPersonPhoneNumber: Int? = nil, walkType: Int? = nil, walkLevel: Int? = nil, equipment: Int? = nil) {
+    internal init(id: Int = -1, title: String, number: String, date: String , imageId: Int? = nil, musterLocation: String, walkEntrance: String, urgentContactPerson: String, urgentContactPersonPhoneNumber: String, walkType: Int? = nil, walkLevel: Int? = nil, equipment: Int? = nil) {
         self.id = id
         self.title = title
         self.number = number
-        self.groupDate = groupDate
-        self.groupCoverImage = groupCoverImage
+        self.date = date
+        self.imageId = imageId
         self.musterLocation = musterLocation
         self.walkEntrance = walkEntrance
         self.urgentContactPerson = urgentContactPerson
