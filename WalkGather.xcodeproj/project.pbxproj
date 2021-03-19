@@ -35,7 +35,6 @@
 		94E1873425E3C78300ECF653 /* JoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E1873325E3C78200ECF653 /* JoinGroupViewController.swift */; };
 		94E1874325E4ABD900ECF653 /* MyGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E1874225E4ABD900ECF653 /* MyGroupViewController.swift */; };
 		94E7A53D2600CF1B0012ADBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 94E7A53C2600CF1B0012ADBA /* GoogleService-Info.plist */; };
-		94E7A54C2600DB5B0012ADBA /* Ethan in Resources */ = {isa = PBXBuildFile; fileRef = 94E7A54B2600DB5B0012ADBA /* Ethan */; };
 		94E7A5502600DB9D0012ADBA /* NewAddGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E7A54E2600DB9D0012ADBA /* NewAddGroup.swift */; };
 		94E7A5512600DB9D0012ADBA /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E7A54F2600DB9D0012ADBA /* Group.swift */; };
 		94E7A5542600DC4B0012ADBA /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E7A5532600DC4B0012ADBA /* Party.swift */; };
@@ -73,7 +72,6 @@
 		94E1873325E3C78200ECF653 /* JoinGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinGroupViewController.swift; sourceTree = "<group>"; };
 		94E1874225E4ABD900ECF653 /* MyGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGroupViewController.swift; sourceTree = "<group>"; };
 		94E7A53C2600CF1B0012ADBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		94E7A54B2600DB5B0012ADBA /* Ethan */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Ethan; sourceTree = "<group>"; };
 		94E7A54E2600DB9D0012ADBA /* NewAddGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAddGroup.swift; sourceTree = "<group>"; };
 		94E7A54F2600DB9D0012ADBA /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		94E7A5532600DC4B0012ADBA /* Party.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
@@ -271,7 +269,6 @@
 		94E1874025E4A2C400ECF653 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				94E7A54B2600DB5B0012ADBA /* Ethan */,
 				7274C52E25F0AB41004F28FB /* Jack */,
 				7274C52D25F0AB21004F28FB /* Ryan */,
 			);
@@ -341,7 +338,6 @@
 				94E08D5825BADE280013E403 /* LaunchScreen.storyboard in Resources */,
 				94E08D5525BADE280013E403 /* Assets.xcassets in Resources */,
 				94E08D5325BADE240013E403 /* Main.storyboard in Resources */,
-				94E7A54C2600DB5B0012ADBA /* Ethan in Resources */,
 				9489A67725F2696800DD830E /* Jack.storyboard in Resources */,
 				94E7A53D2600CF1B0012ADBA /* GoogleService-Info.plist in Resources */,
 			);
