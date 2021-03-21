@@ -92,8 +92,7 @@ class PartyNotificationTVC: UITableViewController{
         cell.lbTitle.text = partyCell.title
         cell.lbTime.text = partyCell.date
         cell.lbNumber.text = String(partyCell.number!)
-        cell.lbLocation.text = partyCell.location
-        cell.lbPartyStart.text = partyCell.startTheParty
+        cell.lbLocation.text = partyCell.musterLocation
         
         return cell
     }

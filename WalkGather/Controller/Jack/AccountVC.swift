@@ -14,6 +14,7 @@ class AccountVC: UIViewController {
     let url_serverImage = URL(string: common_url + "ImageServlet")
     
     @IBOutlet weak var ivAvatar: UIImageView!
+    @IBOutlet weak var lbID: UILabel!
     @IBOutlet weak var lbName: UILabel!
     @IBOutlet weak var lbNickName: UILabel!
     @IBOutlet weak var lbBirthday: UILabel!
@@ -32,7 +33,6 @@ class AccountVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
 
         getAvatar()
         loadData()
@@ -70,6 +70,10 @@ class AccountVC: UIViewController {
     
     func loadData(){
         let userDefaults = UserDefaults.standard
+        
+        if let id = userDefaults.string(forKey: "id"){
+            lbID.text = id
+        }
         
         if let image = userDefaults.data(forKey: "avatar"){
             ivAvatar.image = UIImage(data: image)

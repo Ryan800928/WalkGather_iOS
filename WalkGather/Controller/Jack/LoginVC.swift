@@ -109,7 +109,7 @@ class LoginVC: UIViewController, GIDSignInDelegate {
         auth.signIn(with: credential) { (authResult, error) in
             if error == nil {
                 print("Firebase logged in, authResult: \(authResult!)")
-                self.performSegue(withIdentifier: "result", sender: self)
+                self.dismiss(animated: true)
             } else {
                 print("Firebase login failed, error: \(error!)")
             }
@@ -120,11 +120,14 @@ class LoginVC: UIViewController, GIDSignInDelegate {
     func saveGoogleData(){
         let userDefaults = UserDefaults.standard
 
+        let id = auth.currentUser?.uid
+        print("id: \(String(describing: id))")
         let name = auth.currentUser?.displayName
         let email = auth.currentUser?.email
         let phone = auth.currentUser?.phoneNumber
 //        let photo = auth.currentUser?.photoURL
         
+        userDefaults.set(id, forKey: "id")
         userDefaults.set(name, forKey: "name")
         userDefaults.set(email, forKey: "email")
         userDefaults.set(phone, forKey: "phone")

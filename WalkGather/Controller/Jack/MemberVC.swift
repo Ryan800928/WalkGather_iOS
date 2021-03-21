@@ -10,7 +10,8 @@ import GoogleSignIn
 import Firebase
 
 class MemberVC: UIViewController {
-    
+    var auth : Auth!
+
     let url_serverMember = URL(string: common_url + "MemberServlet")
     let url_serverImage = URL(string: common_url + "ImageServlet")
     
@@ -18,7 +19,7 @@ class MemberVC: UIViewController {
     @IBOutlet weak var ivAvatar: UIImageView!
     
     override func viewWillAppear(_ animated: Bool) {
-        loadData()
+        loadDataAndCheck()
 
     }
     
@@ -48,7 +49,7 @@ class MemberVC: UIViewController {
         ivAvatar.image = UIImage(named: "nobody.jpg")
         lbNickName.text = ""
         
-        loadData()
+        loadDataAndCheck()
     }
     
     
@@ -102,10 +103,13 @@ class MemberVC: UIViewController {
     }
     
     
-    func loadData(){
+    func loadDataAndCheck(){
         let userDefaults = UserDefaults.standard
         
-        if userDefaults.integer(forKey: "id") >= 1 {
+        if userDefaults.integer(forKey: "id") >= 1 || userDefaults.string(forKey: "id") != nil {
+            
+            _ = UIAlertController(title: "會員", message: "登入成功", preferredStyle: .alert)
+            
         }else{
             let alert = UIAlertController(title: "遊客", message: "請登入", preferredStyle: .alert)
             let ok = UIAlertAction(title: "確定", style: .default) { (_) in

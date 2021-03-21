@@ -128,7 +128,8 @@ class AccountEditVC: UIViewController, UIImagePickerControllerDelegate & UINavig
 
         tfName.text = userDefaults.string(forKey: "name")
         tfNickName.text = userDefaults.string(forKey: "nickname")
-        if let birthdayStr = userDefaults.string(forKey: "birthday"), let birthday = formatter.date(from: birthdayStr) {
+        if let birthdayStr = userDefaults.string(forKey: "birthday"),
+           let birthday = formatter.date(from: birthdayStr) {
             dpBirthday.date = birthday
         }else{
             dpBirthday.date = Date()

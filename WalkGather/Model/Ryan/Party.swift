@@ -12,15 +12,13 @@ class Party : Codable {
     var title : String? = ""
     var date : String? = ""
     var number : Int? = 0
-    var location : String? = ""
+    var musterLocation : String? = ""
     var memberID : Int? = 0
-    var startTheParty : String? = ""
     
-    public init(title:String, date: String, number: Int, location: String, startTheParty: String){
+    public init(title:String, date: String, number: Int, location: String){
         self.title = title
         self.date = date
         self.number = number
-        self.location = location
-        self.startTheParty = startTheParty
+        self.musterLocation = location
     }
 }
