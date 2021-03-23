@@ -60,6 +60,14 @@ class NewAddGroupViewController: UIViewController,UIImagePickerControllerDelegat
     let url_serverImage = URL(string: common_url + "ImageServlet")
     var image : UIImage?
     
+    @IBAction func demo(_ sender: Any) {
+        joinGroupTitleTextField.text = "象山團"
+        musterLocationTextField.text = "象山捷運站"
+        numberOfPeopleTextField.text = "3"
+        walkEntranceTextField.text = "象山步道入口"
+        urgentContactPersonTextField.text = "Peter"
+        urgentContactPersonPhoneNumberTextField.text = "022233344"
+    }
     //地形難易按鈕功能
     @IBAction func difficultySwitch(_ sender: UISwitch) {
         //一樣功能寫法

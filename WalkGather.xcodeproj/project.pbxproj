@@ -26,6 +26,7 @@
 		941360AE25C0149400953BE2 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941360AD25C0149400953BE2 /* GroupViewController.swift */; };
 		9489A67725F2696800DD830E /* Jack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9489A67525F2696800DD830E /* Jack.storyboard */; };
 		9489A68225F26B9200DD830E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9489A68125F26B9200DD830E /* Common.swift */; };
+		949373B02609A20C000B7A53 /* JoinGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949373AF2609A20C000B7A53 /* JoinGroup.swift */; };
 		949A4F3F25CBCD7C00FEBD38 /* NewAddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949A4F3E25CBCD7C00FEBD38 /* NewAddGroupViewController.swift */; };
 		94E08D4C25BADE240013E403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E08D4B25BADE240013E403 /* AppDelegate.swift */; };
 		94E08D4E25BADE240013E403 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E08D4D25BADE240013E403 /* SceneDelegate.swift */; };
@@ -61,6 +62,7 @@
 		941360AD25C0149400953BE2 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		9489A67625F2696800DD830E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = WalkGather/Base.lproj/Jack.storyboard; sourceTree = "<group>"; };
 		9489A68125F26B9200DD830E /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		949373AF2609A20C000B7A53 /* JoinGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinGroup.swift; path = ../../../../WalkGather/WalkGather/Model/Ryan/JoinGroup.swift; sourceTree = "<group>"; };
 		949A4F3E25CBCD7C00FEBD38 /* NewAddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddGroupViewController.swift; sourceTree = "<group>"; };
 		94E08D4825BADE240013E403 /* WalkGather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkGather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94E08D4B25BADE240013E403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				94E7A5532600DC4B0012ADBA /* Party.swift */,
 				94E7A54F2600DB9D0012ADBA /* Group.swift */,
 				94E7A54E2600DB9D0012ADBA /* NewAddGroup.swift */,
+				949373AF2609A20C000B7A53 /* JoinGroup.swift */,
 			);
 			path = Ryan;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				727DF5ED25FF6DEB001BE9BE /* TabBC.swift in Sources */,
 				94E7A5542600DC4B0012ADBA /* Party.swift in Sources */,
 				94E1874325E4ABD900ECF653 /* MyGroupViewController.swift in Sources */,
+				949373B02609A20C000B7A53 /* JoinGroup.swift in Sources */,
 				7245E28D25FF24C600B1204A /* FriendNotificationCell.swift in Sources */,
 				94E7A5512600DB9D0012ADBA /* Group.swift in Sources */,
 				94E08D4C25BADE240013E403 /* AppDelegate.swift in Sources */,

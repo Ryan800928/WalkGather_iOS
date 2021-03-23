@@ -3,12 +3,17 @@
 import UIKit
 
 
-class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
+class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
+    // 儲存所有資料
+//    var allGroups:[NewAddGroup]!
+//    // 儲存要呈現的資料
+//    var searchGroups: [NewAddGroup]!
     
     var newAddGroups = [NewAddGroup]()
     let url_server = URL(string: common_url + "PartyServlet")
     
     
+    @IBOutlet weak var groupSearchBar: UISearchBar!
     @IBOutlet weak var groupTableView: UITableView!
     var walkImage = ["xiangshan","volcanic","yushan","xiangshan","volcanic","yushan"]
     var groupHost = ["Ryan","羅志祥","EDGE","CENA"]
@@ -40,29 +45,49 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         self.groupTableView.dataSource = self
+        //        self.groupSearchBar.delegate = self
+        //        taiwanAreaPickerView.delegate = self
+        //        taiwanAreaPickerView.dataSource = self
+        //        walkTimePickerView.delegate = self
+        //        walkTimePickerView.dataSource = self
+        //        walkDifficultyPickerView.delegate = self
+        //        walkDifficultyPickerView.dataSource = self
         
-        taiwanAreaPickerView.delegate = self
-        taiwanAreaPickerView.dataSource = self
-        walkTimePickerView.delegate = self
-        walkTimePickerView.dataSource = self
-        walkDifficultyPickerView.delegate = self
-        walkDifficultyPickerView.dataSource = self
-        
-        taiwanAreaTextVIew.inputView = taiwanAreaPickerView
-        walkTimeTextView.inputView = walkTimePickerView
-        walkDifficultyTextView.inputView = walkDifficultyPickerView
+        //        taiwanAreaTextVIew.inputView = taiwanAreaPickerView
+        //        walkTimeTextView.inputView = walkTimePickerView
+        //        walkDifficultyTextView.inputView = walkDifficultyPickerView
         
         
         taiwanAreaPickerView.tag = 1
         walkTimePickerView.tag = 2
         walkDifficultyPickerView.tag = 3
         
-        
+//        allGroups = newAddGroups
         createPicker()
 
         
         
-        
+    }
+    
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        
+//        let text = groupSearchBar.text ?? ""
+//        // 如果搜尋條件為空字串，就顯示原始資料；否則就顯示搜尋後結果
+//        if text == "" {
+//            searchGroups = newAddGroups
+//            
+//        } else {
+//            // 搜尋原始資料內有無包含關鍵字(不區別大小寫)
+//            
+//            searchGroups = newAddGroups.filter({ (newaddGroup) -> Bool in
+//                return newaddGroup.title.uppercased().contains(text.uppercased())
+//            })
+//        }
+//        groupTableView.reloadData()
+//    }
+    // 點擊鍵盤上的Search按鈕時將鍵盤隱藏
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,12 +137,12 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         toolbar.setItems([doneBtn], animated: true)
         
         //inputAccessoryView輸入附件視圖
-        taiwanAreaTextVIew.inputAccessoryView = toolbar
-        taiwanAreaTextVIew.inputView = taiwanAreaPickerView
-        walkTimeTextView.inputAccessoryView = toolbar
-        walkTimeTextView.inputView = walkTimePickerView
-        walkDifficultyTextView.inputAccessoryView = toolbar
-        walkDifficultyTextView.inputView = walkDifficultyPickerView
+        //        taiwanAreaTextVIew.inputAccessoryView = toolbar
+        //        taiwanAreaTextVIew.inputView = taiwanAreaPickerView
+        //        walkTimeTextView.inputAccessoryView = toolbar
+        //        walkTimeTextView.inputView = walkTimePickerView
+        //        walkDifficultyTextView.inputAccessoryView = toolbar
+        //        walkDifficultyTextView.inputView = walkDifficultyPickerView
         
     }
     //Done Button方法
@@ -189,62 +214,94 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     
     
-}
-extension GroupViewController : UIPickerViewDataSource,UIPickerViewDelegate{
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        switch pickerView.tag {
-        case 1:
-            return taiwanArea.count
-        case 2:
-            return walkTime.count
-        case 3:
-            return walkDifficulty.count
-        default:
-            return 1
+    @IBAction func memberLogin(_ sender: UIButton) {
+        let userDefaults = UserDefaults.standard
+        
+        if userDefaults.integer(forKey: "id") >= 1 {
+            
+            if let controller = self.storyboard?.instantiateViewController(withIdentifier: "newAddGruop") as? NewAddGroupViewController {
+                navigationController?.pushViewController(controller, animated: true)
+            }
+        }else{
+            let alert = UIAlertController(title: "遊客", message: "請登入", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "確定", style: .default) {_ in
+                let con = UIStoryboard(name: "Jack", bundle: nil).instantiateViewController(withIdentifier: "Login") as! LoginVC
+                self.present(con, animated: true, completion: nil)
+
+                }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
         }
-    }
+            
+            
+            
+        }
+   
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch pickerView.tag {
-        case 1:
-            return taiwanArea[row]
-        case 2:
-            return walkTime[row]
-        case 3:
-            return walkDifficulty[row]
-        default:
-            return "test"
-        }
-    }
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        switch pickerView.tag {
-        case 1:
-            taiwanAreaTextVIew.text = taiwanArea[row]
-        //taiwanAreaField.resignFirstResponder()
-        case 2:
-            walkTimeTextView.text = walkTime[row]
-        //walkTimeField.resignFirstResponder()
-        case 3:
-            walkDifficultyTextView.text = walkDifficulty[row]
-        //walkDifficultyField.resignFirstResponder()
-        default:
-            return
-        }
+        
+        
+        
+        
+        
+        //extension GroupViewController : UIPickerViewDataSource,UIPickerViewDelegate{
+        //    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        //        return 1
+        //    }
+        //
+        //    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        //        switch pickerView.tag {
+        //        case 1:
+        //            return taiwanArea.count
+        //        case 2:
+        //            return walkTime.count
+        //        case 3:
+        //            return walkDifficulty.count
+        //        default:
+        //            return 1
+        //        }
+        //    }
+        //
+        //    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        //        switch pickerView.tag {
+        //        case 1:
+        //            return taiwanArea[row]
+        //        case 2:
+        //            return walkTime[row]
+        //        case 3:
+        //            return walkDifficulty[row]
+        //        default:
+        //            return "test"
+        //        }
+        //    }
+        //    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //        switch pickerView.tag {
+        //        case 1:
+        //            taiwanAreaTextVIew.text = taiwanArea[row]
+        //        //taiwanAreaField.resignFirstResponder()
+        //        case 2:
+        //            walkTimeTextView.text = walkTime[row]
+        //        //walkTimeField.resignFirstResponder()
+        //        case 3:
+        //            walkDifficultyTextView.text = walkDifficulty[row]
+        //        //walkDifficultyField.resignFirstResponder()
+        //        default:
+        //            return
+        //        }
+        //
+        //    }
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //}
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
+

@@ -109,7 +109,7 @@ extension RegisterVC {
         if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRect = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRect.height
-            view.frame.origin.y = -keyboardHeight / 2
+            view.frame.origin.y = -keyboardHeight / 4
         } else {
             view.frame.origin.y = -view.frame.height / 3
         }
