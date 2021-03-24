@@ -26,7 +26,6 @@
 		941360AE25C0149400953BE2 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 941360AD25C0149400953BE2 /* GroupViewController.swift */; };
 		9489A67725F2696800DD830E /* Jack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9489A67525F2696800DD830E /* Jack.storyboard */; };
 		9489A68225F26B9200DD830E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9489A68125F26B9200DD830E /* Common.swift */; };
-		949373B02609A20C000B7A53 /* JoinGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949373AF2609A20C000B7A53 /* JoinGroup.swift */; };
 		949A4F3F25CBCD7C00FEBD38 /* NewAddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949A4F3E25CBCD7C00FEBD38 /* NewAddGroupViewController.swift */; };
 		94E08D4C25BADE240013E403 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E08D4B25BADE240013E403 /* AppDelegate.swift */; };
 		94E08D4E25BADE240013E403 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E08D4D25BADE240013E403 /* SceneDelegate.swift */; };
@@ -39,6 +38,7 @@
 		94E7A5502600DB9D0012ADBA /* NewAddGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E7A54E2600DB9D0012ADBA /* NewAddGroup.swift */; };
 		94E7A5512600DB9D0012ADBA /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E7A54F2600DB9D0012ADBA /* Group.swift */; };
 		94E7A5542600DC4B0012ADBA /* Party.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E7A5532600DC4B0012ADBA /* Party.swift */; };
+		CA93EA61260AD331001470CB /* JoinGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA93EA60260AD330001470CB /* JoinGroup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,7 +62,6 @@
 		941360AD25C0149400953BE2 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		9489A67625F2696800DD830E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = WalkGather/Base.lproj/Jack.storyboard; sourceTree = "<group>"; };
 		9489A68125F26B9200DD830E /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
-		949373AF2609A20C000B7A53 /* JoinGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JoinGroup.swift; path = ../../../../WalkGather/WalkGather/Model/Ryan/JoinGroup.swift; sourceTree = "<group>"; };
 		949A4F3E25CBCD7C00FEBD38 /* NewAddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAddGroupViewController.swift; sourceTree = "<group>"; };
 		94E08D4825BADE240013E403 /* WalkGather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WalkGather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		94E08D4B25BADE240013E403 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +76,7 @@
 		94E7A54E2600DB9D0012ADBA /* NewAddGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAddGroup.swift; sourceTree = "<group>"; };
 		94E7A54F2600DB9D0012ADBA /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		94E7A5532600DC4B0012ADBA /* Party.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Party.swift; sourceTree = "<group>"; };
+		CA93EA60260AD330001470CB /* JoinGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinGroup.swift; sourceTree = "<group>"; };
 		FEDA80E5F408D6E50227B4F7 /* Pods_WalkGather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WalkGather.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -107,7 +107,7 @@
 				94E7A5532600DC4B0012ADBA /* Party.swift */,
 				94E7A54F2600DB9D0012ADBA /* Group.swift */,
 				94E7A54E2600DB9D0012ADBA /* NewAddGroup.swift */,
-				949373AF2609A20C000B7A53 /* JoinGroup.swift */,
+				CA93EA60260AD330001470CB /* JoinGroup.swift */,
 			);
 			path = Ryan;
 			sourceTree = "<group>";
@@ -411,8 +411,8 @@
 				727DF5ED25FF6DEB001BE9BE /* TabBC.swift in Sources */,
 				94E7A5542600DC4B0012ADBA /* Party.swift in Sources */,
 				94E1874325E4ABD900ECF653 /* MyGroupViewController.swift in Sources */,
-				949373B02609A20C000B7A53 /* JoinGroup.swift in Sources */,
 				7245E28D25FF24C600B1204A /* FriendNotificationCell.swift in Sources */,
+				CA93EA61260AD331001470CB /* JoinGroup.swift in Sources */,
 				94E7A5512600DB9D0012ADBA /* Group.swift in Sources */,
 				94E08D4C25BADE240013E403 /* AppDelegate.swift in Sources */,
 				72782DB325F4B6370046D415 /* GroupTableViewCell.swift in Sources */,
@@ -592,7 +592,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TYHA8NFL49;
 				INFOPLIST_FILE = WalkGather/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -613,7 +613,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TYHA8NFL49;
 				INFOPLIST_FILE = WalkGather/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

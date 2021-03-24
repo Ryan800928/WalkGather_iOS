@@ -21,7 +21,7 @@ class Member : Codable {
     var relation : String? = ""
     var emergencyPhone : String? = ""
     var imageId : Int? = 0
-    var token : Int? = 0
+    var token : String? = ""
     var image : Data?
     var date : String?
     var friendId : Int? = 0
@@ -53,7 +53,7 @@ class Member : Codable {
         self.relation = relation
     }
     
-    public init(_ id: Int , _ name: String, _ nickname: String,_ birthday: String,_ gender: Int,   _ email: String , _ password: String, _ phone: String, _ emergency: String, _ relation: String, _ emergencyPhone: String, _ imageId: Int, _ token: Int) {
+    public init(_ id: Int , _ name: String, _ nickname: String,_ birthday: String,_ gender: Int,   _ email: String , _ password: String, _ phone: String, _ emergency: String, _ relation: String, _ emergencyPhone: String, _ imageId: Int, _ token: String) {
         self.id = id
         self.name = name
         self.nickname = nickname
