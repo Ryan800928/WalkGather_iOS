@@ -8,9 +8,9 @@
 import UIKit
 
 class JoinGroupViewController: UIViewController {
-    var joinGroup:JoinGroup?
+    var joinAddGroup:NewAddGroup?
     
-    var walkImage = ["xiangshan","volcanic","yushan","xiangshan","volcanic","yushan"]
+    var walkImage = ["xiangshan","volcanic","yushan","daken","volcanic","yushan"]
     var groupHost = ["Peter","Peter","Peter","Peter"]
     var launchDate = ["2021年3月30日","2021年3月30日","2021年月30日","2021年3月30日"]
     var numberOfPeople = ["3","6","2","4"]
@@ -19,8 +19,12 @@ class JoinGroupViewController: UIViewController {
     var walkEntrance = ["象山入口"]
     var urgentContactPersonData = ["Peter"]
     var urgentContactPersonPhoneNumberData = ["022233344"]
-    @IBOutlet weak var joinGroupTitle: UILabel!
+    
+    var getImage : UIImage?
+    
     @IBOutlet weak var joinGroupCoverImage: UIImageView!
+    @IBOutlet weak var joinGroupTitle: UILabel!
+    
     @IBOutlet weak var joinGroupDateLabel: UILabel!
     
     @IBOutlet weak var joinGroupNumberOfPeopleLabel: UILabel!
@@ -30,15 +34,20 @@ class JoinGroupViewController: UIViewController {
     @IBOutlet weak var urgentContactPersonPhoneNumber: UILabel!
     
     func showJoinGroupData(){
-        joinGroupTitle.text = groupName[0]
-        joinGroupCoverImage.image = UIImage(named: walkImage[0])
-        joinGroupDateLabel.text = launchDate[0]
+        joinGroupTitle.text = joinAddGroup?.title
         
-        joinGroupNumberOfPeopleLabel.text = numberOfPeople[0]
-        joinGroupLocationLabel.text = groupLocation[0]
-        joinWalkEntance.text = walkEntrance[0]
-        urgentContactPerson.text = urgentContactPersonData[0]
-        urgentContactPersonPhoneNumber.text = urgentContactPersonPhoneNumberData[0]
+        joinGroupCoverImage.image = getImage
+//        joinGroupCoverImage.image = UIImage(named: "\(walkImage[0])")
+        
+//        joinGroupCoverImage.[walkImage] = UIImage
+//        joinGroupCoverImage.image = UIImage(named: "volcanic")
+        joinGroupDateLabel.text = joinAddGroup?.date
+        
+        joinGroupNumberOfPeopleLabel.text = joinAddGroup?.number
+        joinGroupLocationLabel.text = joinAddGroup?.musterLocation
+        joinWalkEntance.text = joinAddGroup?.walkEntrance
+        urgentContactPerson.text = joinAddGroup?.urgentContactPerson
+        urgentContactPersonPhoneNumber.text = joinAddGroup?.urgentContactPersonPhoneNumber
     }
     
     override func viewDidLoad() {

@@ -61,12 +61,12 @@ class NewAddGroupViewController: UIViewController,UIImagePickerControllerDelegat
     var image : UIImage?
     
     @IBAction func demo(_ sender: Any) {
-        joinGroupTitleTextField.text = "象山團"
-        musterLocationTextField.text = "象山捷運站"
+        joinGroupTitleTextField.text = "大坑團"
+        musterLocationTextField.text = "大坑7-11"
         numberOfPeopleTextField.text = "3"
-        walkEntranceTextField.text = "象山步道入口"
+        walkEntranceTextField.text = "大坑9號步道"
         urgentContactPersonTextField.text = "Peter"
-        urgentContactPersonPhoneNumberTextField.text = "022233344"
+        urgentContactPersonPhoneNumberTextField.text = "042233344"
     }
     //地形難易按鈕功能
     @IBAction func difficultySwitch(_ sender: UISwitch) {
@@ -239,7 +239,10 @@ class NewAddGroupViewController: UIViewController,UIImagePickerControllerDelegat
         
         if groupTitle != "" || musterLocation != "" || walkEntrance != "" ||  urgentContactPerson != "" || number != "" || urgentContactPersonPhoneNumber != "" {
             
-            let party = NewAddGroup(id: id, title: groupTitle!, number: number!, date: date!, musterLocation: musterLocation!, walkEntrance: walkEntrance!, urgentContactPerson: urgentContactPerson!, urgentContactPersonPhoneNumber: urgentContactPersonPhoneNumber!, walkType: walkType, walkLevel: walkLevel, equipment: equipment)
+            let party = NewAddGroup(id: id, title: groupTitle!, date: date!, musterLocation: musterLocation!, walkEntrance: walkEntrance!, number: number!, imageId: nil, urgentContactPerson: urgentContactPerson!, urgentContactPersonPhoneNumber: urgentContactPersonPhoneNumber!, walkType: walkType, walkLevel: walkLevel, equipment: equipment!)
+            
+            
+            
             
             var requestParam = [String:String]()
             let encoder = JSONEncoder()

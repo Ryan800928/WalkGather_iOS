@@ -117,7 +117,7 @@
                                             <outlet property="musterLocationLabel" destination="yoN-O7-Cza" id="gZZ-JO-Epg"/>
                                             <outlet property="numberOfPeopleLabel" destination="YnH-cy-gKx" id="dei-lk-Njw"/>
                                             <outlet property="walkImage" destination="A1c-dT-cdY" id="jzy-cv-Brq"/>
-                                            <segue destination="z6X-Vc-GeX" kind="show" id="qp2-Cc-ozl"/>
+                                            <segue destination="z6X-Vc-GeX" kind="show" identifier="groupDetailVC" id="qp2-Cc-ozl"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -160,7 +160,6 @@
                         <outlet property="walkDifficultyTextView" destination="0Cs-hz-c4n" id="ETq-Hz-Gyw"/>
                         <outlet property="walkTimeTextView" destination="8Tn-QO-IE5" id="nXw-tv-RMV"/>
                         <segue destination="7ge-PS-55K" kind="show" identifier="NewAddGroup" id="88C-Rm-Wnk"/>
-                        <segue destination="z6X-Vc-GeX" kind="show" id="yBd-0r-Ltb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ip8-dv-wbb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -524,7 +523,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2AC-67-37Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4889" y="-515"/>
+            <point key="canvasLocation" x="5135" y="-919"/>
         </scene>
         <!--參加揪團-->
         <scene sceneID="TOv-Fs-aXD">
@@ -544,7 +543,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yushan" translatesAutoresizingMaskIntoConstraints="NO" id="HAl-hw-7il">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xiangshan" translatesAutoresizingMaskIntoConstraints="NO" id="HAl-hw-7il">
                                 <rect key="frame" x="0.0" y="148" width="390" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="AHG-3H-Vbi"/>
@@ -601,7 +600,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqB-1r-X2x">
-                                <rect key="frame" x="100" y="469" width="150" height="20"/>
+                                <rect key="frame" x="100" y="469" width="203" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -642,7 +641,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="022233344" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKP-Ql-1v9">
-                                <rect key="frame" x="180" y="698" width="95" height="21"/>
+                                <rect key="frame" x="180" y="698" width="148" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -665,7 +664,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="joinGroupCoverImage" destination="HAl-hw-7il" id="Br3-dc-3lD"/>
+                        <outlet property="joinGroupCoverImage" destination="HAl-hw-7il" id="grj-VI-Llk"/>
                         <outlet property="joinGroupDateLabel" destination="OqB-1r-X2x" id="rN2-db-ppR"/>
                         <outlet property="joinGroupLocationLabel" destination="5Aa-8F-xYp" id="eYP-CY-F3H"/>
                         <outlet property="joinGroupNumberOfPeopleLabel" destination="mZH-SP-13R" id="Nnd-nh-ZMl"/>
@@ -1244,9 +1243,6 @@
             <point key="canvasLocation" x="5596.9230769230771" y="249.52606635071089"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="yBd-0r-Ltb"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="bell" catalog="system" width="128" height="124"/>
         <image name="homekit" catalog="system" width="128" height="106"/>
@@ -1257,7 +1253,6 @@
         <image name="record.circle" catalog="system" width="128" height="121"/>
         <image name="volcanic" width="681" height="1024"/>
         <image name="xiangshan" width="512" height="768"/>
-        <image name="yushan" width="600" height="362"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

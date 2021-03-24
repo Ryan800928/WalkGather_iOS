@@ -11,7 +11,7 @@ class JoinGroup {
     
     var title :String
     var date: String
-    var  number:String
+    var number:String
     var image:UIImage
     var location:String
     

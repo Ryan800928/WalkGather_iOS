@@ -10,12 +10,13 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
 //    var searchGroups: [NewAddGroup]!
     
     var newAddGroups = [NewAddGroup]()
+    var joinAddGroups : [NewAddGroup] = []
     let url_server = URL(string: common_url + "PartyServlet")
     
     
     @IBOutlet weak var groupSearchBar: UISearchBar!
     @IBOutlet weak var groupTableView: UITableView!
-    var walkImage = ["xiangshan","volcanic","yushan","xiangshan","volcanic","yushan"]
+    var walkImage = ["xiangshan","volcanic","yushan","daken","volcanic","yushan"]
     var groupHost = ["Ryan","羅志祥","EDGE","CENA"]
     var launchDate = ["2021年2月23日","2021年2月24日","2021年2月25日","2021年2月23日"]
     var numberOfPeople = ["3","6","2","4"]
@@ -34,9 +35,6 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     var taiwanAreaPickerView = UIPickerView()
     var walkTimePickerView = UIPickerView()
     var walkDifficultyPickerView = UIPickerView()
-    
-    
-    
     
     
     
@@ -62,9 +60,8 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         walkTimePickerView.tag = 2
         walkDifficultyPickerView.tag = 3
         
-//        allGroups = newAddGroups
+        joinAddGroups = newAddGroups
         createPicker()
-
         
         
     }
@@ -92,6 +89,7 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     override func viewWillAppear(_ animated: Bool) {
         showAllGroup()
+        
     }
     @objc func showAllGroup() {
         let requestParam = ["action" : "allPartys"]
@@ -104,7 +102,9 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
                     do{
                         let result = try JSONDecoder().decode([NewAddGroup].self, from: data!)
                         self.newAddGroups = result
-                        print("result : \(result)" )
+                        self.joinAddGroups = self.newAddGroups
+                        print("result : \(String(describing: result))" )
+                        
                         DispatchQueue.main.async {
                             if let control = self.groupTableView.refreshControl {
                                 if control.isRefreshing {
@@ -115,7 +115,7 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
                             /* 抓到資料後重刷table view */
                             self.groupTableView.reloadData()
                         }
-                    
+                        
                     }catch let err{
                         print("error \(err)")
                     }
@@ -167,12 +167,12 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         // tableViewCell預設的imageView點擊後會改變尺寸，所以建立UITableViewCell子類別SpotCell
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! GroupTableViewCell
         let newAddGroup = newAddGroups[indexPath.row]
-        
+        print("newAddGroup   \(String(describing: newAddGroup.imageId))")
         // 尚未取得圖片，另外開啟task請求
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
         requestParam["imageId"] = newAddGroup.imageId
-        print(newAddGroup.imageId)
+        print("newAddGroup.imageId:   \(String(describing: newAddGroup.imageId))")
         requestParam["imageSize"] = cell.walkImage.frame.width
         // 圖片寬度為tableViewCell的1/4，ImageView的寬度也建議在storyboard加上比例設定的constraint
         var image: UIImage?
@@ -185,14 +185,14 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
                 if image == nil {
                     image = UIImage(named: "noImage.jpg")
                 }
-//                DispatchQueue.main.async { cell.walkImage.image = image }
+                //                DispatchQueue.main.async { cell.walkImage.image = image }
             } else {
                 print(error!.localizedDescription)
             }
         }
-        
+
         cell.groupNameLabel.text = newAddGroup.title
-        print("newAddGroup: \(newAddGroup.title)")
+        print("newAddGroup   : \(String(describing: newAddGroup.title))")
         cell.groupDateLabel.text = newAddGroup.date
         cell.numberOfPeopleLabel.text = newAddGroup.number
         cell.musterLocationLabel.text = newAddGroup.musterLocation
@@ -200,6 +200,24 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "groupDetailVC", sender: indexPath)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "groupDetailVC" {
+//            let indexPath = self.tableView.indexPathForSelectedRow
+            let indexPath = self.groupTableView.indexPathForSelectedRow
+            let joinAddGroup = joinAddGroups[indexPath!.row]
+            let joinGroupVC = segue.destination as! JoinGroupViewController
+            joinGroupVC.joinAddGroup = joinAddGroup
+            let cell = groupTableView.cellForRow(at: indexPath!) as! GroupTableViewCell
+            joinGroupVC.getImage = cell.walkImage.image
+            
+        }
+    }
+    
     //日期 -> 字符串
     func date2String(_ date:Date, dateFormat:String = "yyyy-MM-dd HH:mm:ss") -> String {
         let formatter = DateFormatter()
@@ -233,10 +251,17 @@ class GroupViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             alert.addAction(ok)
             present(alert, animated: true, completion: nil)
         }
+//        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//            if segue.identifier == "groupVC" {
+//                let indexPath = self.tableView.indexPathForSelectedRow
+//                let  joinAddGroup = joinAddGroups[indexPath!.row]
+//                let groupVC = segue.destination as! JoinGroupViewController
+//                groupVC.joinAddGroup = groupVC
+//            }
+//        }
             
             
-            
-        }
+    }
    
     
         
